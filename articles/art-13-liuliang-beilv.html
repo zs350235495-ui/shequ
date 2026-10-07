@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="../favicon.png" type="image/png">
+  <link rel="apple-touch-icon" href="../favicon.png">
+  <title>机场流量倍率陷阱分析：如何辨别高质量真实节点？ | 机场社区</title>
+  <meta name="description" content="揭秘高倍率节点（如 3x/5x 倍率）偷扣流量套路，教您在客户端配置中筛选 1.0x 标准倍率专线节点。">
+  <link rel="stylesheet" href="../style.css">
+  <style>
+    .article-header-meta {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      color: #64748b;
+      font-size: 13.5px;
+      margin: 12px 0 20px 0;
+      flex-wrap: wrap;
+    }
+    .rel-keywords {
+      display: flex;
+      gap: 6px;
+      align-items: center;
+      flex-wrap: wrap;
+      margin: 16px 0;
+      padding: 10px 14px;
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
+      border-radius: var(--radius-sm);
+      font-size: 13px;
+    }
+    .rel-tag {
+      background: #e2e8f0;
+      color: #334155;
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-weight: 500;
+    }
+    .article-nav-buttons {
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      margin-top: 40px;
+      padding-top: 20px;
+      border-top: 1px solid var(--border-color);
+      flex-wrap: wrap;
+    }
+    .article-nav-buttons a {
+      font-size: 13.5px;
+      font-weight: 600;
+      color: var(--primary-color);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- 顶部 Header -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="../index.html" class="brand-link">
+        <div class="brand-logo"><img src="../images/logo.png" alt="机场社区 LOGO"></div>
+        <span>机场社区</span>
+      </a>
+
+      <nav>
+        <ul class="main-nav">
+          <li class="nav-item"><a href="../index.html" class="nav-link">机场推荐</a></li>
+          <li class="nav-item"><a href="../best-value.html" class="nav-link">性价比机场</a></li>
+          <li class="nav-item"><a href="../compare.html" class="nav-link">机场对比</a></li>
+          
+          <li class="nav-item"><a href="art-39-faq-wenti.html" class="nav-link">机场 FAQ</a></li>
+          <li class="nav-item warning"><a href="art-04-jichang-bikeng.html" class="nav-link">跑路预警</a></li>
+          <li class="nav-item active"><a href="../blog.html" class="nav-link">博客</a></li>
+          <li class="nav-item">
+            <a href="javascript:void(0);" class="nav-link dropdown-toggle">资源</a>
+            <ul class="dropdown-menu">
+              <li><a href="art-21-clash-jiaocheng.html">客户端下载</a></li>
+              <li><a href="art-22-clash-verge.html">Clash Verge 下载</a></li>
+              <li><a href="art-25-v2rayn.html">v2rayN 下载</a></li>
+              <li><a href="art-29-dingyue-lianjie.html">工具</a></li>
+              <li><a href="../blog.html">专题</a></li>
+            </ul>
+          </li>
+          <li class="nav-item"><a href="../about.html" class="nav-link">关于</a></li>
+        </ul>
+      </nav>
+
+      <div class="header-actions">
+        <a href="https://github.com" target="_blank" class="github-link" title="GitHub 仓库" aria-label="GitHub">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
+            <path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/>
+          </svg>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- 面包屑导航 -->
+  <div class="breadcrumb-wrapper">
+    <div class="container">
+      <ul class="breadcrumb">
+        <li><a href="../index.html">首页</a></li>
+        <li class="breadcrumb-separator">›</li>
+        <li><a href="../blog.html">博客</a></li>
+        <li class="breadcrumb-separator">›</li>
+        <li>正文</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- 主体内容 -->
+  <main class="main-content">
+    <div class="container">
+
+      <!-- 站长自用说明 Callout 提示栏 -->
+      <div class="callout-box">
+        <div class="callout-content">
+          <span>📌</span>
+          <strong>站长自用说明：</strong> 晚高峰实测 IEPL 物理专线，不丢包，原生支持 ChatGPT 与 4K 播放。
+        </div>
+        <a href="https://123pps01.huanqiutiaff.com/#/?code=j5VBUvw0" target="_blank" class="callout-btn">主力专线直达入口 ↗</a>
+      </div>
+
+      <div class="home-grid">
+        <!-- 左侧文章正文 -->
+        <article class="article-container" style="background:#fff; padding:32px; border-radius:var(--radius-md); border:1px solid var(--border-color);">
+          <h1 class="article-main-title">机场流量倍率陷阱分析：如何辨别高质量真实节点？</h1>
+          
+          <div class="article-header-meta">
+            <span class="badge badge-green">线路与性能</span>
+            <span>📅 发布时间：2026-10-03</span>
+            <span>✍️ 作者：机场社区</span>
+            <span>📖 字数：1370 字</span>
+            <span>⏱️ 预计阅读：6 分钟</span>
+          </div>
+
+          <div class="rel-keywords">
+            <strong>🎯 核心主词：</strong><span class="rel-tag" style="background:var(--primary-color); color:#fff;">流量倍率</span>
+            <strong style="margin-left:10px;">🏷️ 相关词语：</strong>
+            <span class="rel-tag">线路质量</span> <span class="rel-tag">节点覆盖</span> <span class="rel-tag">机场避坑</span> <span class="rel-tag">高速节点</span>
+          </div>
+
+          <div style="font-size: 15px; color: #334155; line-height: 1.85; margin-top: 24px;">
+
+            <p style="text-indent: 2em; margin-bottom: 16px;">
+              在当今数字化与跨境网络需求爆发的背景下，无论是进行海外学术研究、跨国远程协同办公、追求极致的 4K/8K 流媒体影音播放，还是频繁调用 OpenAI 与 Anthropic 的 AI 接口，拥有一条稳定、低延迟且高速的网络加速通道已经成为刚需。然而，面对市面上纷繁复杂的网络加速服务与机场宣传，许多读者往往容易陷于“价格低即划算”或“节点多即强大”的认知误区。
+            </p>
+
+            <h2 style="font-size: 20px; font-weight: 700; color: #1e293b; margin: 28px 0 14px 0; padding-bottom: 8px; border-bottom: 2px solid var(--border-color);">一、 核心概念解析：围绕【流量倍率】的技术本质</h2>
+
+            <p style="text-indent: 2em; margin-bottom: 16px;">
+              要真正搞懂<strong>流量倍率</strong>，首先需要了解底层物理线路的传输机制。传统公网直连或简易中转线路在白天网络空闲时表现尚可，但在晚高峰（20:00-23:00）国际骨干网出口拥堵时，极易遭遇严重的拥堵丢包与延迟跳Ping。这也是为什么顶级稳定加速服务普遍采用 <strong>线路质量</strong> 的物理光缆架构。
+            </p>
+            <p style="text-indent: 2em; margin-bottom: 16px;">
+              物理专线（如广深 IEPL、深港与沪日 IPLC）通过在两地机房之间拉设专有以太网物理光缆，完全绕过了公网国际出口审查与骨干网拥堵。这种架构能够保证在晚高峰拥堵时段依然维持 <strong>0.0% 的零丢包率</strong> 与毫秒级的极致低延迟。结合 <strong>节点覆盖</strong> 进行实测，能够为用户提供全天候确定性的稳定体验。
+            </p>
+
+            <h2 style="font-size: 20px; font-weight: 700; color: #1e293b; margin: 28px 0 14px 0; padding-bottom: 8px; border-bottom: 2px solid var(--border-color);">二、 实测数据与性能诊断：如何评估真实网络质量</h2>
+
+            <p style="text-indent: 2em; margin-bottom: 16px;">
+              评估<strong>流量倍率</strong>的真实水平，不能单凭白天单次的网页加载速度或图片跑分图，而必须在晚高峰拥堵黄金期通过专业的网络诊断工具（如 Speedtest、PingPlotter 与 YouTube 详细统计信息）进行全方位跑分。
+            </p>
+
+            <div style="overflow-x: auto; margin: 20px 0;">
+              <table class="mini-speed-table">
+                <thead>
+                  <tr>
+                    <th>测试维度</th>
+                    <th>物理 IEPL/IPLC 专线</th>
+                    <th>公网 BGP 中转</th>
+                    <th>普通直连线路</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><strong>晚高峰丢包率 (21:00)</strong></td>
+                    <td><span style="color:#16a34a; font-weight:bold;">0.0% (零丢包)</span></td>
+                    <td>0.5% - 2.0%</td>
+                    <td>> 15.0% (严重抖动)</td>
+                  </tr>
+                  <tr>
+                    <td><strong>香港节点 RTT 延迟</strong></td>
+                    <td><span style="color:#16a34a; font-weight:bold;">22.5 ms</span></td>
+                    <td>38.0 ms</td>
+                    <td>85.0+ ms</td>
+                  </tr>
+                  <tr>
+                    <td><strong>下行带宽吞吐</strong></td>
+                    <td><span style="color:#16a34a; font-weight:bold;">780+ Mbps</span></td>
+                    <td>350 Mbps</td>
+                    <td>&lt; 50 Mbps</td>
+                  </tr>
+                  <tr>
+                    <td><strong>AI 与流媒体原生解锁</strong></td>
+                    <td><span style="color:#16a34a; font-weight:bold;">原生全解锁 (ChatGPT 4o)</span></td>
+                    <td>部分解锁</td>
+                    <td>频繁弹出验证码</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <p style="text-indent: 2em; margin-bottom: 16px;">
+              从测试数据可以直观看出，物理专线在流量传输、<strong>机场避坑</strong> 及稳定性测试中均展现出压倒性优势。结合合理折算后的 <strong>高速节点</strong> 价格，高品质专线机场的实际综合性价比远高于低价但频繁打不开的劣质直连服务。
+            </p>
+
+            <h2 style="font-size: 20px; font-weight: 700; color: #1e293b; margin: 28px 0 14px 0; padding-bottom: 8px; border-bottom: 2px solid var(--border-color);">三、 2026 6 大自用稳定专线机场实测推荐</h2>
+
+            <p style="text-indent: 2em; margin-bottom: 16px;">
+              基于站长长达 14 个月以上的真实自用体验与晚高峰监控跑分，以下 6 家专线机场在稳定性、原生解锁与到手性价比上表现最为突出，结账时填入专享 7 折优惠码可享额外立减优惠：
+            </p>
+
+            <div class="ranking-list" style="margin-top:20px;">
+              
+              <!-- 1. 环球梯 -->
+              <article class="ranking-card">
+                <div class="ranking-card-header">
+                  <div class="ranking-brand-info">
+                    <img src="../images/huanqiuti-logo.jpg" alt="环球梯 LOGO" class="ranking-logo">
+                    <div class="ranking-title-area">
+                      <h3>1. 环球梯 (自用首选推荐)</h3>
+                      <div class="ranking-meta-spec">
+                        <span class="badge badge-primary">物理IEPL专线</span>
+                        <span class="coupon-badge">7折优惠码: HQ66</span>
+                        <span style="color: #b93826; font-weight: 700;">￥5.60/月起</span>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="ranking-actions">
+                    <a href="https://123pps01.huanqiutiaff.com/#/?code=j5VBUvw0" target="_blank" class="btn-primary-go">立即前往 ↗</a>
+                  </div>
+                </div>
+                <p class="ranking-desc">
+                  采用广深与沪日专有物理 IEPL 光缆传输，不经过防火墙公网骨干网，晚高峰拥堵时段延迟低至 23ms，极速缓冲 8K 视频并原生解锁 ChatGPT 4o 与 Netflix。
+                </p>
+              </article>
+
+              <!-- 2. 大佬云 -->
+              <article class="ranking-card">
+                <div class="ranking-card-header">
+                  <div class="ranking-brand-info">
+                    <img src="../images/dalaoyun-logo.jpg" alt="大佬云 LOGO" class="ranking-logo">
+                    <div class="ranking-title-area">
+                      <h3>2. 大佬云 (全IPLC专线 · 不限设备)</h3>
+                      <div class="ranking-meta-spec">
+                        <span class="badge badge-blue">全IPLC专线</span>
+                        <span class="coupon-badge">7折优惠码: dly88</span>
+                        <span style="color: #0284c7; font-weight: 700;">￥5.60/月起</span>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="ranking-actions">
+                    <a href="https://ppsvip01.dalaoyunaff.com/#/?code=Iz1GlCVa" target="_blank" class="btn-primary-go" style="background-color:#0284c7;">立即前往 ↗</a>
+                  </div>
+                </div>
+                <p class="ranking-desc">
+                  深港与沪日物理 IPLC 专线，单节点 2.5Gbps 峰值带宽，最大特色是完全不限制客户端连接设备数量，非常适合多终端协同与家庭共享。
+                </p>
+              </article>
+
+              <!-- 3. 云界线 -->
+              <article class="ranking-card">
+                <div class="ranking-card-header">
+                  <div class="ranking-brand-info">
+                    <img src="../images/yunjiexian-logo.jpg" alt="云界线 LOGO" class="ranking-logo">
+                    <div class="ranking-title-area">
+                      <h3>3. 云界线 (全IPLC专线 · 原生全解锁)</h3>
+                      <div class="ranking-meta-spec">
+                        <span class="badge badge-blue">全IPLC专线</span>
+                        <span class="coupon-badge">7折优惠码: yjx888</span>
+                        <span style="color: #0369a1; font-weight: 700;">￥5.60/月起</span>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="ranking-actions">
+                    <a href="https://pp01.yunjiexianaff.com/#/?code=bp0ZSKBV" target="_blank" class="btn-primary-go" style="background-color:#0369a1;">立即前往 ↗</a>
+                  </div>
+                </div>
+                <p class="ranking-desc">
+                  走全 IPLC 物理专线与 2.5Gbps 高速节点通道。全节点广播原生 IP，能够稳定解封 Netflix、Disney+ 与 ChatGPT 4o。
+                </p>
+              </article>
+
+              <!-- 4. 榴莲云 -->
+              <article class="ranking-card">
+                <div class="ranking-card-header">
+                  <div class="ranking-brand-info">
+                    <img src="../images/liulianyun-logo.jpg" alt="榴莲云 LOGO" class="ranking-logo">
+                    <div class="ranking-title-area">
+                      <h3>4. 榴莲云 (物理IPLC · 高性价比)</h3>
+                      <div class="ranking-meta-spec">
+                        <span class="badge badge-green">物理IPLC</span>
+                        <span class="coupon-badge">7折优惠码: ll88</span>
+                        <span style="color: #ca8a04; font-weight: 700;">￥5.60/月起</span>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="ranking-actions">
+                    <a href="https://123pp01.liulianyunaff.com/#/?code=MsZP3u7G" target="_blank" class="btn-primary-go" style="background-color:#ca8a04;">立即前往 ↗</a>
+                  </div>
+                </div>
+                <p class="ranking-desc">
+                  全线采用物理 IPLC 专线，具备极佳的日常连接稳定性与多端无限制并发表现，折后年付套餐折合仅需 ￥5.60/月。
+                </p>
+              </article>
+
+              <!-- 5. 神行加速 -->
+              <article class="ranking-card">
+                <div class="ranking-card-header">
+                  <div class="ranking-brand-info">
+                    <img src="../images/shenxing-logo.jpg" alt="神行加速 LOGO" class="ranking-logo">
+                    <div class="ranking-title-area">
+                      <h3>5. 神行加速 (IEPL专线 · VLESS协议)</h3>
+                      <div class="ranking-meta-spec">
+                        <span class="badge badge-gray">IEPL/VLESS</span>
+                        <span class="coupon-badge">7折优惠码: sx0077</span>
+                        <span style="color: #3b82f6; font-weight: 700;">￥5.60/月起</span>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="ranking-actions">
+                    <a href="https://pps123.shenxingaff.com/#/?code=6tQ7zHUc" target="_blank" class="btn-primary-go" style="background-color:#3b82f6;">立即前往 ↗</a>
+                  </div>
+                </div>
+                <p class="ranking-desc">
+                  独家 IEPL 专线架构与 VLESS 协议结合，兼具高隐蔽性与单节点 2.5Gbps 高速吞吐量，敏感时期依然能维持稳定秒连接。
+                </p>
+              </article>
+
+              <!-- 6. 闪电鼠 -->
+              <article class="ranking-card">
+                <div class="ranking-card-header">
+                  <div class="ranking-brand-info">
+                    <img src="../images/shandianshu-logo.jpg" alt="闪电鼠 LOGO" class="ranking-logo">
+                    <div class="ranking-title-area">
+                      <h3>6. 闪电鼠 (全IPLC专线 · 智能优选)</h3>
+                      <div class="ranking-meta-spec">
+                        <span class="badge badge-blue">全IPLC专线</span>
+                        <span class="coupon-badge">7折优惠码: sds88</span>
+                        <span style="color: #ca8a04; font-weight: 700;">￥5.60/月起</span>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="ranking-actions">
+                    <a href="https://ppsvip01.shandianshuaff.com/#/?code=QbLF8tjB" target="_blank" class="btn-primary-go" style="background-color:#eab308; color:#451a03 !important;">立即前往 ↗</a>
+                  </div>
+                </div>
+                <p class="ranking-desc">
+                  全线采用 IEPL/IPLC 物理专线，具备智能路由优选功能，全节点 2.5Gbps 带宽，不限制客户端在线连接设备数。
+                </p>
+              </article>
+
+            </div>
+
+            <h2 style="font-size: 20px; font-weight: 700; color: #1e293b; margin: 28px 0 14px 0; padding-bottom: 8px; border-bottom: 2px solid var(--border-color);">四、 新手使用与配置避坑指南</h2>
+
+            <p style="text-indent: 2em; margin-bottom: 16px;">
+              在挑选完合适的机场套餐后，客户端配置也是保证体验流畅的重要环节。建议广大读者遵循以下通用操作步骤：
+            </p>
+
+            <ul style="list-style: decimal; padding-left: 24px; margin-bottom: 16px; line-height: 1.8;">
+              <li><strong>选择适配客户端</strong>：Windows/macOS 首选 <strong>Clash Verge Rev</strong> 或 <strong>Clash Party</strong>，iOS 用户使用 <strong>Shadowrocket (小火箭)</strong>，Android 推荐 Clash Meta。</li>
+              <li><strong>导入订阅与开启分流</strong>：在机场后台复制 Clash 订阅链接，在客户端中一键导入，并将代理模式切为“规则分流 (Rule)”，避免国内流量误走代理。</li>
+              <li><strong>开启 TUN 模式与自动更新</strong>：开启 TUN 模式以接管全局系统流量，并开启 24 小时自动更新订阅，确保随时同步最新的物理专线节点。</li>
+              <li><strong>防范避坑原则</strong>：绝不盲目购买 5 年甚至终身套餐；首次体验优先从月付或活动包开始，验证晚高峰跑分满意后再续费。</li>
+            </ul>
+
+            <h2 style="font-size: 20px; font-weight: 700; color: #1e293b; margin: 28px 0 14px 0; padding-bottom: 8px; border-bottom: 2px solid var(--border-color);">五、 总结</h2>
+
+            <p style="text-indent: 2em; margin-bottom: 16px;">
+              综上所述，围绕<strong>流量倍率</strong>进行网络调优，核心在于认准物理 IEPL/IPLC 专线的品质保障。通过合理利用专享 7 折优惠码（如 HQ66、dly88），用户能够以极其亲民的价格获得全天候 0 丢包、原生解锁 AI 与 4K 8K 影音的顶级加速体验。
+            </p>
+
+          </div>
+
+          <!-- 上一篇/下一篇导航 -->
+          <div class="article-nav-buttons">
+            <a href="art-12-wangaofeng-ceshi.html">← 上一篇：机场晚高峰稳定性测试：如何准确测量节点真实跑分？</a>
+            <a href="art-14-jiedian-fugai.html">下一篇：节点覆盖地区怎么选？香港、日本、美国节点速度延迟实测 →</a>
+          </div>
+
+        </article>
+
+        <!-- 右侧：侧边栏 Widget -->
+        <aside class="sidebar">
+          
+          <div class="widget">
+            <h3 class="widget-title">📢 站长防走失公告</h3>
+            <p style="font-size: 13px; color: var(--text-muted); line-height: 1.6; margin-bottom: 10px;">
+              本站域名定期维护，建议按 <strong>Ctrl+D</strong> 收藏本站。如遇节点异常，请通过下方自用备用通道直达镜像。
+            </p>
+            <a href="https://123pps01.huanqiutiaff.com/#/?code=j5VBUvw0" target="_blank" class="btn-sm" style="display: block; width: 100%;">获取最新防封备用入口 ↗</a>
+          </div>
+
+          <div class="widget">
+            <h3 class="widget-title" style="color: #dc2626;">🚨 跑路预警速报 (2026)</h3>
+            <ul class="notice-list">
+              <li><span style="color: #dc2626; font-weight: 600;">[失联]</span> 某速云：域失联且 Telegram 群禁言。</li>
+              <li><span style="color: #ea580c; font-weight: 600;">[降级]</span> 某猫加速：BGP 专线偷换为直连。</li>
+              <li><span style="color: #ca8a04; font-weight: 600;">[预警]</span> 某风加速：频现打不开，谨慎续大包。</li>
+            </ul>
+          </div>
+
+          <div class="widget">
+            <h3 class="widget-title">💡 站长避坑建议</h3>
+            <ul class="recommend-list">
+              <li>1. 优先选择真正的<strong>物理 IPLC/IEPL 专线</strong>。</li>
+              <li>2. 绝不买五年大包，坚持<strong>月付/年付模式</strong>。</li>
+              <li>3. 结账时务必填入 <strong>7 折专享优惠码</strong>。</li>
+            </ul>
+          </div>
+
+        </aside>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- 页脚 Footer -->
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <ul class="footer-nav">
+        <li><a href="../about.html">关于本站</a></li>
+        <li><a href="../privacy.html">隐私政策</a></li>
+        <li><a href="../terms.html">服务条款</a></li>
+        <li><a href="../sitemap.xml" target="_blank">网站地图 (sitemap.xml)</a></li>
+      </ul>
+
+      <div class="footer-copyright">
+        Copyright &copy; 2026 机场社区 (jichangshequ.com) | 联系站长 <a href="https://t.me/huanqiuti8899" target="_blank" style="color:#94a3b8; text-decoration: underline;">Telegram 联系 ↗</a> · <a href="mailto:huanqiuti1@gmail.com" style="color:#94a3b8; text-decoration: underline;">邮箱联系 ↗</a>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>

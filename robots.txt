@@ -1,0 +1,6 @@
+# robots.txt for 机场社区 (jichangshequ.com)
+
+User-agent: *
+Allow: /
+
+Sitemap: https://jichangshequ.com/sitemap.xml

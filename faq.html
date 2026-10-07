@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="favicon.png" type="image/png">
+  <link rel="apple-touch-icon" href="favicon.png">
+  <title>机场常见问题 FAQ | 机场推荐、选购与使用问题解答 | 机场社区</title>
+  <meta name="description" content="机场是什么、怎么选机场、Clash / Shadowrocket 订阅怎么导入、IPLC 和 IEPL 有什么区别、机场跑路怎么判断——一次性整理常见机场问题，新手也能看懂。">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .faq-quick-nav {
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
+      border-radius: var(--radius-md);
+      padding: 20px;
+      margin-bottom: 32px;
+    }
+    .faq-quick-nav h3 {
+      font-size: 16px;
+      font-weight: 700;
+      color: #1e293b;
+      margin-bottom: 12px;
+    }
+    .faq-nav-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+      gap: 10px;
+    }
+    .faq-nav-link {
+      display: block;
+      padding: 8px 12px;
+      background: #ffffff;
+      border: 1px solid #cbd5e1;
+      border-radius: var(--radius-sm);
+      font-size: 13.5px;
+      color: #334155;
+      text-decoration: none !important;
+      transition: all 0.2s ease;
+      font-weight: 500;
+    }
+    .faq-nav-link:hover {
+      background: var(--primary-color);
+      color: #ffffff !important;
+      border-color: var(--primary-color);
+    }
+    .faq-section {
+      margin-bottom: 40px;
+      scroll-margin-top: 80px;
+    }
+    .faq-section-title {
+      font-size: 20px;
+      font-weight: 700;
+      color: #1e293b;
+      padding-bottom: 8px;
+      border-bottom: 2px solid var(--primary-color);
+      margin-bottom: 16px;
+    }
+    .faq-section-subtitle {
+      font-size: 13.5px;
+      color: #64748b;
+      margin-bottom: 16px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- 顶部 Header -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="index.html" class="brand-link">
+        <div class="brand-logo"><img src="images/logo.png" alt="机场社区 LOGO"></div>
+        <span>机场社区</span>
+      </a>
+
+      <nav>
+        <ul class="main-nav">
+          <li class="nav-item"><a href="index.html" class="nav-link">机场推荐</a></li>
+          <li class="nav-item"><a href="best-value.html" class="nav-link">性价比机场</a></li>
+          <li class="nav-item"><a href="compare.html" class="nav-link">机场对比</a></li>
+          
+          <li class="nav-item active"><a href="faq.html" class="nav-link">机场 FAQ</a></li>
+          <li class="nav-item warning"><a href="articles/art-04-jichang-bikeng.html" class="nav-link">跑路预警</a></li>
+          <li class="nav-item"><a href="blog.html" class="nav-link">博客</a></li>
+          <li class="nav-item">
+            <a href="javascript:void(0);" class="nav-link dropdown-toggle">资源</a>
+            <ul class="dropdown-menu">
+              <li><a href="articles/art-21-clash-jiaocheng.html">客户端下载</a></li>
+              <li><a href="articles/art-22-clash-verge.html">Clash Verge 下载</a></li>
+              <li><a href="articles/art-25-v2rayn.html">v2rayN 下载</a></li>
+              <li><a href="articles/art-29-dingyue-lianjie.html">工具</a></li>
+              <li><a href="blog.html">专题</a></li>
+            </ul>
+          </li>
+          <li class="nav-item"><a href="about.html" class="nav-link">关于</a></li>
+        </ul>
+      </nav>
+
+      <div class="header-actions">
+        <a href="https://github.com" target="_blank" class="github-link" title="GitHub 仓库" aria-label="GitHub">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
+            <path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/>
+          </svg>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- 面包屑导航 -->
+  <div class="breadcrumb-wrapper">
+    <div class="container">
+      <ul class="breadcrumb">
+        <li><a href="index.html">首页</a></li>
+        <li class="breadcrumb-separator">›</li>
+        <li>机场 FAQ</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- 主体内容 -->
+  <main class="main-content">
+    <div class="container">
+
+      <!-- 站长自用说明 Callout 提示栏 -->
+      <div class="callout-box">
+        <div class="callout-content">
+          <span>📌</span>
+          <strong>站长自用说明：</strong> 晚高峰实测 IEPL 物理专线，不丢包，原生支持 ChatGPT 与 4K 播放。
+        </div>
+        <a href="https://123pps01.huanqiutiaff.com/#/?code=j5VBUvw0" target="_blank" class="callout-btn">主力专线直达入口 ↗</a>
+      </div>
+
+      <div class="home-grid">
+        <!-- 左侧 FAQ 内容 -->
+        <div class="main-articles">
+          <h1 class="page-title" style="border:none; margin-bottom: 8px;">机场常见问题 FAQ</h1>
+          <p style="font-size: 14px; color: #475569; line-height: 1.8; margin-bottom: 24px;">
+            从“机场是什么”到订阅导入、线路类型、流媒体/AI 解锁与跑路避坑，按主题结构化整理，点击下方导航可直接跳转至您关心的部分。
+          </p>
+
+          <!-- 按主题快速跳转导航 -->
+          <div class="faq-quick-nav">
+            <h3>📌 按主题快速跳转</h3>
+            <div class="faq-nav-grid">
+              <a href="#basics" class="faq-nav-link">1. 机场是什么</a>
+              <a href="#getting-started" class="faq-nav-link">2. 新手怎么选机场</a>
+              <a href="#client-import" class="faq-nav-link">3. 订阅链接怎么导入</a>
+              <a href="#client-compat" class="faq-nav-link">4. 机场支持哪些客户端</a>
+              <a href="#nodes-regions" class="faq-nav-link">5. 机场节点怎么选</a>
+              <a href="#troubleshooting" class="faq-nav-link">6. 卡顿连不上怎么办</a>
+              <a href="#plans-traffic" class="faq-nav-link">7. 流量套餐怎么选</a>
+              <a href="#cheap-value" class="faq-nav-link">8. 便宜机场靠谱吗</a>
+              <a href="#line-types" class="faq-nav-link">9. 专线中转区别</a>
+              <a href="#streaming-ai" class="faq-nav-link">10. 流媒体与 AI 解锁</a>
+              <a href="#coupons-trial" class="faq-nav-link">11. 优惠码与试用</a>
+              <a href="#shutdown-risk" class="faq-nav-link">12. 跑路预警判断</a>
+              <a href="#rankings-trust" class="faq-nav-link">13. 排行榜靠谱吗</a>
+              <a href="#account-safety" class="faq-nav-link">14. 账号共享安全</a>
+              <a href="#use-cases" class="faq-nav-link">15. 机场适合哪些人</a>
+            </div>
+          </div>
+
+          <!-- Section 1: 机场是什么 -->
+          <section id="basics" class="faq-section">
+            <h2 class="faq-section-title">1. 机场是什么 (基础概念)</h2>
+            <div class="faq-section-subtitle">新手最常问的入门概念，搞懂机场、梯子与科学上网的关系。</div>
+            <div class="faq-grid">
+              <div class="faq-card">
+                <div class="faq-question">机场是什么？</div>
+                <div class="faq-answer">
+                  简单说，机场就是卖代理节点订阅的服务商。您付费购买套餐后，拿到一条专属的“订阅链接”，导入 Clash、Shadowrocket 或 v2rayN 等客户端就能使用。因早期 V2Ray 客户端图标是纸飞机，业内便习惯将此类加速服务称为“机场”。
+                </div>
+              </div>
+              <div class="faq-card">
+                <div class="faq-question">机场和传统 VPN 有什么区别？</div>
+                <div class="faq-answer">
+                  传统 VPN 通常由单一公司提供捆绑客户端与固定线路；而机场卖的是标准的“订阅链接”，您可以自由选择最顺手的客户端（如 Clash Verge Rev、小火箭），自己按需切换不同地区或低延迟节点，玩法更灵活且速度上限极高。
+                </div>
+              </div>
+              <div class="faq-card">
+                <div class="faq-question">机场和“梯子”是一回事吗？</div>
+                <div class="faq-answer">
+                  “梯子”是所有跨境翻墙加速工具的民间统称，而“机场”是目前用户量最大、性价比最高的一种落地服务形式。
+                </div>
+              </div>
+              <div class="faq-card">
+                <div class="faq-question">自建节点和买机场哪个更好？</div>
+                <div class="faq-answer">
+                  自建节点需要自己购买海外 VPS、配置安全协议并承担 IP 被封锁的维护风险；而购买商业机场省心很多，由专业团队维护物理 IEPL/IPLC 专线与出口 IP 轮换，对绝大多数日常用户而言，买专线机场性价比更高。
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- Section 2: 新手怎么选机场 -->
+          <section id="getting-started" class="faq-section">
+            <h2 class="faq-section-title">2. 新手怎么选机场</h2>
+            <div class="faq-section-subtitle">第一次挑选机场的核心考量维度与避坑建议。</div>
+            <div class="faq-grid">
+              <div class="faq-card">
+                <div class="faq-question">新手挑选机场应该看哪些核心因素？</div>
+                <div class="faq-answer">
+                  重点关注 4 点：**晚高峰稳定度**（是否为物理 IEPL/IPLC 专线）、**原生 IP 解锁能力**（ChatGPT 4o 与 Netflix 是否免验证）、**月付或活动套餐的门槛**以及**专享 7 折优惠码**（如 `HQ66`、`dly88`）。
+                </div>
+              </div>
+              <div class="faq-card">
+                <div class="faq-question">机场购买前最需要注意什么？</div>
+                <div class="faq-answer">
+                  坚决不要在第一次使用时购买长期大包（如 5 年包），必须先选择月付或活动特惠套餐，亲自验证本地运营商在晚高峰 21:00 的真实速度与丢包情况。
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- Section 3: 机场订阅链接怎么导入 -->
+          <section id="client-import" class="faq-section">
+            <h2 class="faq-section-title">3. 机场订阅链接怎么导入</h2>
+            <div class="faq-section-subtitle">主流客户端一键导入配置图文流程。</div>
+            <div class="faq-grid">
+              <div class="faq-card">
+                <div class="faq-question">机场订阅链接怎么导入 Clash / Clash Verge？</div>
+                <div class="faq-answer">
+                  复制机场后台的 Clash 订阅链接，打开 Clash Verge 点击【Profiles (配置)】，在顶部 URL 框中粘贴链接并点击 Import (导入)，更新成功后右键选择配置并开启 TUN 模式或系统代理。
+                </div>
+              </div>
+              <div class="faq-card">
+                <div class="faq-question">机场订阅链接怎么导入 Shadowrocket (小火箭)？</div>
+                <div class="faq-answer">
+                  打开 Shadowrocket，点击右上角【+】，类型选择【Subscribe】，在 URL 一栏粘贴机场订阅地址并保存，随后在主界面下拉刷新即可自动下载全部节点。
+                </div>
+              </div>
+              <div class="faq-card">
+                <div class="faq-question">机场订阅链接怎么导入 v2rayN？</div>
+                <div class="faq-answer">
+                  打开 v2rayN 顶部菜单【订阅分组】->【订阅分组设置】，添加一条新分组并在【可选地址】中粘贴订阅链接保存，随后点击【订阅分组】->【更新订阅】即可。
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- Section 4: 机场支持哪些客户端 -->
+          <section id="client-compat" class="faq-section">
+            <h2 class="faq-section-title">4. 机场支持哪些客户端</h2>
+            <div class="faq-section-subtitle">跨平台兼容性与主流工具匹配度说明。</div>
+            <div class="faq-grid">
+              <div class="faq-card">
+                <div class="faq-question">机场支持哪些常用客户端？</div>
+                <div class="faq-answer">
+                  主流专线机场均原生支持 **Clash Verge Rev** (Windows/macOS)、**Clash Party**、**Shadowrocket** (iOS)、**v2rayN** (Windows) 及 **Clash Meta** (Android)。
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- Section 5: 机场节点怎么选 -->
+          <section id="nodes-regions" class="faq-section">
+            <h2 class="faq-section-title">5. 机场节点怎么选</h2>
+            <div class="faq-section-subtitle">香港、日本、美国与新加坡节点特性拆解。</div>
+            <div class="faq-grid">
+              <div class="faq-card">
+                <div class="faq-question">港日美新节点各自有什么特点？</div>
+                <div class="faq-answer">
+                  **香港节点**延迟最低（20ms 左右），适合日常网页与游戏；**日本节点**走沪日专线，适合动漫与日服游戏；**美国节点**广播原生 IP，是解锁 ChatGPT 与 OpenAI 接口的首选；**新加坡节点**适合东南亚流媒体解锁。
+                </div>
+              </div>
+              <div class="faq-card">
+                <div class="faq-question">什么是流量倍率？</div>
+                <div class="faq-answer">
+                  倍率代表流量扣除比例：1.0x 倍率消耗 1GB 扣除 1GB 额度；高倍率（如 3.0x）消耗 1GB 扣除 3GB 额度。选购时认准 1.0x 标准倍率专线节点。
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- Section 6: 机场卡顿、连不上怎么办 -->
+          <section id="troubleshooting" class="faq-section">
+            <h2 class="faq-section-title">6. 机场卡顿连不上怎么办 (故障排查)</h2>
+            <div class="faq-section-subtitle">针对节点 Timeout、订阅更新 403 报错的快速自查步骤。</div>
+            <div class="faq-grid">
+              <div class="faq-card">
+                <div class="faq-question">节点全部显示 -1ms 或 Timeout 报错怎么办？</div>
+                <div class="faq-answer">
+                  1) 检查系统时间是否精准同步；2) 重新刷新更新订阅；3) 检查本地防火墙或安全软件是否阻断；4) 尝试切换节点模式为 Rule 规则分流。
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- Section 7: 流量套餐怎么选 -->
+          <section id="plans-traffic" class="faq-section">
+            <h2 class="faq-section-title">7. 流量和套餐怎么选</h2>
+            <div class="faq-section-subtitle">结合预算与使用量挑选最省钱的规格。</div>
+            <div class="faq-grid">
+              <div class="faq-card">
+                <div class="faq-question">一般用户每月需要多少流量？</div>
+                <div class="faq-answer">
+                  日常网页浏览、社交软件及文字 AI 交互每月 60GB 足够；若需要频繁观看 4K 视频影音，建议挑选 120GB~240GB 畅游套餐。
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- Section 8: 便宜机场靠谱吗 -->
+          <section id="cheap-value" class="faq-section">
+            <h2 class="faq-section-title">8. 便宜机场靠谱吗</h2>
+            <div class="faq-section-subtitle">平价加速服务与超卖风险分析。</div>
+            <div class="faq-grid">
+              <div class="faq-card">
+                <div class="faq-question">5元~10元/月的便宜机场值得买吗？</div>
+                <div class="faq-answer">
+                  部分平价机场通过专线批量采购降低了成本，折后 ￥5.60/月起即可享受真正的内网专线（如【环球梯】、【大佬云】）；但如果价格低于市场正常硬件成本（如 2 元无限流量），则往往存在节点严重超卖与随时跑路风险。
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- Section 9: 专线、中转、直连有什么区别 -->
+          <section id="line-types" class="faq-section">
+            <h2 class="faq-section-title">9. 专线、中转与直连的区别</h2>
+            <div class="faq-section-subtitle">底层物理传输架构与晚高峰表现对比。</div>
+            <div class="faq-grid">
+              <div class="faq-card">
+                <div class="faq-question">IEPL / IPLC 物理专线好在哪里？</div>
+                <div class="faq-answer">
+                  物理专线拥有独立跨国光缆，不经过防火墙公网骨干网，晚高峰拥堵时段丢包率恒定为 0.0%，延迟低且不会受到公网波动干扰。
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- Section 10: 机场能解锁 Netflix、ChatGPT 吗 -->
+          <section id="streaming-ai" class="faq-section">
+            <h2 class="faq-section-title">10. 机场能解锁 Netflix 与 ChatGPT 吗</h2>
+            <div class="faq-section-subtitle">流媒体 4K 影音与 AI 工具风控解锁情况。</div>
+            <div class="faq-grid">
+              <div class="faq-card">
+                <div class="faq-question">为什么某些节点访问 ChatGPT 会提示 Access Denied？</div>
+                <div class="faq-answer">
+                  因为 OpenAI 对普通机房 IP 进行了封锁，选择广播原生住宅 IP 的物理专线节点（如【环球梯】、【大佬云】）可完美解决风控阻断。
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- Section 11: 机场优惠码与免费试用靠谱吗 -->
+          <section id="coupons-trial" class="faq-section">
+            <h2 class="faq-section-title">11. 机场优惠码与试用</h2>
+            <div class="faq-section-subtitle">结账立减折扣码使用说明。</div>
+            <div class="faq-grid">
+              <div class="faq-card">
+                <div class="faq-question">如何使用 7 折专享优惠码？</div>
+                <div class="faq-answer">
+                  在推荐机场结账页面找到【优惠码 / 折扣码】输入框，填入对应的专享 7 折优惠码（环球梯: `HQ66` | 大佬云: `dly88` | 云界线: `yjx888` | 榴莲云: `ll88` | 神行: `sx0077` | 闪电鼠: `sds88`）即可直接打 7 折。
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- Section 12: 机场跑路怎么判断 -->
+          <section id="shutdown-risk" class="faq-section">
+            <h2 class="faq-section-title">12. 机场跑路怎么判断 (跑路预警)</h2>
+            <div class="faq-section-subtitle">识别跑路前夕的 4 大征兆。</div>
+            <div class="faq-grid">
+              <div class="faq-card">
+                <div class="faq-question">机场跑路前通常有哪些征兆？</div>
+                <div class="faq-answer">
+                  1) 节点长时间大规模 Timeout 无人修复；2) 官方 Telegram 群组开启全员禁言；3) 官网域名频繁失联；4) 突然打着节日旗号推出极低价格的“终身包/5年大包”。
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- Section 13: 机场排行榜靠谱吗 -->
+          <section id="rankings-trust" class="faq-section">
+            <h2 class="faq-section-title">13. 机场排行榜靠谱吗</h2>
+            <div class="faq-section-subtitle">客观评测逻辑与数据积累说明。</div>
+            <div class="faq-grid">
+              <div class="faq-card">
+                <div class="faq-question">本站机场排行榜的评测依据是什么？</div>
+                <div class="faq-answer">
+                  本站榜单基于站长长达 14 个月以上的真实自用监控，包含晚高峰 21:00 实测下行跑分、物理专线架构认证与客服响应综合评分。
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- Section 14: 机场账号能共享吗 -->
+          <section id="account-safety" class="faq-section">
+            <h2 class="faq-section-title">14. 机场账号能共享吗</h2>
+            <div class="faq-section-subtitle">多设备并发限制与合规使用规则。</div>
+            <div class="faq-grid">
+              <div class="faq-card">
+                <div class="faq-question">机场账号能否和朋友合租共享？</div>
+                <div class="faq-answer">
+                  需看机场的设备数规则：若机场限制 3 台设备（如环球梯），多人合租可能导致触顶断连；若选择【大佬云】或【闪电鼠】这种**完全不限制设备数**的机场，则支持多终端多成员共享。
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- Section 15: 机场适合哪些人用 -->
+          <section id="use-cases" class="faq-section">
+            <h2 class="faq-section-title">15. 机场适合哪些人用</h2>
+            <div class="faq-section-subtitle">细分人群与应用场景匹配。</div>
+            <div class="faq-grid">
+              <div class="faq-card">
+                <div class="faq-question">机场主要适合哪些人群使用？</div>
+                <div class="faq-answer">
+                  适合程序员/AI 开发者（调用 API 与使用 ChatGPT/Claude）、跨境电商卖家（店铺运营与海外社交媒体）、留学生（学术研究与 Google Scholar）及影音爱好者（4K/8K Netflix 秒开）。
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- 底部 CTA 引导盒 -->
+          <div class="cta-box">
+            <h3>🚀 还有其他疑问？直接查看最全的实测数据</h3>
+            <p>我们为您整理了全部收录机场的价格、线路类型与实测速度对比表。</p>
+            <div class="cta-buttons">
+              <a href="index.html" class="btn-cta-primary">查看机场推荐排行榜 ↗</a>
+              <a href="compare.html" class="btn-cta-secondary">对比全部机场参数 →</a>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- 右侧：侧边栏 Widget -->
+        <aside class="sidebar">
+          
+          <div class="widget">
+            <h3 class="widget-title">📢 站长防走失公告</h3>
+            <p style="font-size: 13px; color: var(--text-muted); line-height: 1.6; margin-bottom: 10px;">
+              本站域名定期维护，建议按 <strong>Ctrl+D</strong> 收藏本站。如遇节点异常，请直接通过下方自用通道直达镜像地址。
+            </p>
+            <a href="https://123pps01.huanqiutiaff.com/#/?code=j5VBUvw0" target="_blank" class="btn-sm" style="display: block; width: 100%;">获取最新防封备用入口 ↗</a>
+          </div>
+
+          <!-- 跑路预警栏目 -->
+          <div class="widget">
+            <h3 class="widget-title" style="color: #dc2626;">🚨 跑路预警速报 (2026 TOP 10)</h3>
+            <ul class="notice-list" style="font-size:12.5px;">
+              <li><span style="color: #dc2626; font-weight: 600;">[已失联]</span> 速风云：终身大包圈钱后解散群组。</li>
+              <li><span style="color: #ea580c; font-weight: 600;">[降级]</span> 喵喵加速：IPLC 专线悄悄降级直连。</li>
+              <li><span style="color: #dc2626; font-weight: 600;">[售域名]</span> 极光云线：域名变更跳转赌博网站。</li>
+              <li><span style="color: #ea580c; font-weight: 600;">[大促跑]</span> 极速梯子：买一送一大促后三天关站。</li>
+              <li><span style="color: #ca8a04; font-weight: 600;">[全超时]</span> 云端漫游：节点 100% 丢包并全员禁言。</li>
+              <li><span style="color: #dc2626; font-weight: 600;">[低价坑]</span> 飞跃机场：3元年付爆满后删库跑路。</li>
+              <li><span style="color: #ea580c; font-weight: 600;">[踢拉黑]</span> 星辰加速：节点故障拉黑反馈用户。</li>
+              <li><span style="color: #dc2626; font-weight: 600;">[二次骗]</span> 幻影云：骗取迁移费后二次失联。</li>
+              <li><span style="color: #ca8a04; font-weight: 600;">[删余额]</span> 彩虹梯：被揭发偷换中转后删余额。</li>
+              <li><span style="color: #dc2626; font-weight: 600;">[无预警]</span> 零点云：域名节点失效客服退信。</li>
+            </ul>
+            <a href="articles/art-04-jichang-bikeng.html" style="font-size:12px; color:#dc2626; font-weight:600; display:block; margin-top:8px; text-align:right;">查看 10 大案例详细避坑分析 →</a>
+          </div>
+
+          <div class="widget">
+            <h3 class="widget-title">💡 站长避坑建议</h3>
+            <ul class="recommend-list">
+              <li>1. 优先选择真正的<strong>物理 IPLC/IEPL 专线</strong>。</li>
+              <li>2. 绝不买五年大包，坚持<strong>月付/年付活动模式</strong>。</li>
+              <li>3. 结账时务必填入对应的 <strong>7 折专享优惠码</strong>。</li>
+            </ul>
+          </div>
+
+        </aside>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- 页脚 Footer -->
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <ul class="footer-nav">
+        <li><a href="about.html">关于本站</a></li>
+        <li><a href="privacy.html">隐私政策</a></li>
+        <li><a href="terms.html">服务条款</a></li>
+        <li><a href="sitemap.xml" target="_blank">网站地图 (sitemap.xml)</a></li>
+      </ul>
+
+      <div class="footer-copyright">
+        Copyright &copy; 2026 机场社区 (jichangshequ.com) | 联系站长 <a href="https://t.me/huanqiuti8899" target="_blank" style="color:#94a3b8; text-decoration: underline;">Telegram 联系 ↗</a> · <a href="mailto:huanqiuti1@gmail.com" style="color:#94a3b8; text-decoration: underline;">邮箱联系 ↗</a>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
