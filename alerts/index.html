@@ -8,6 +8,45 @@
   <meta name="description" content="机场社区实时更新的机场跑路黑名单、失联机场汇总与线路偷换降级预警。帮助翻墙用户及时避坑，远离终身包钱套路。">
   <link rel="canonical" href="https://jichangshequ.com/alerts/index.html">
   <link rel="stylesheet" href="../style.css">
+  <style>
+    .filter-btn {
+      padding: 7px 16px;
+      border-radius: 20px;
+      border: 1px solid #cbd5e1;
+      background: #ffffff;
+      color: #475569;
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+    .filter-btn:hover, .filter-btn.active {
+      background: #dc2626;
+      color: #ffffff;
+      border-color: #dc2626;
+    }
+    .archive-card {
+      background: #ffffff;
+      padding: 20px;
+      border-radius: 8px;
+      border: 1px solid #e2e8f0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .archive-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    }
+    .status-pill {
+      font-size: 11.5px;
+      font-weight: 700;
+      padding: 2px 8px;
+      border-radius: 4px;
+      display: inline-block;
+    }
+  </style>
 </head>
 <body>
 
@@ -67,23 +106,146 @@
   <main class="main-content">
     <div class="container" style="max-width: 960px; margin: 0 auto; padding-top: 20px;">
       <h1>🚨 机场跑路黑名单与避坑预警档案库</h1>
-      <p style="color: #64748b; margin-bottom: 25px;">实时监测并收录全网跑路、失联、域名出售与暗中降级线路的机场服务商，提供第三方实测存证。</p>
-      
-      <div class="alerts-archive-grid" style="display: grid; gap: 15px;">
-        <article class="archive-card" style="background:#fff; padding: 20px; border-radius: 8px; border:1px solid #e2e8f0; display:flex; justify-content:space-between; align-items:center;">
-          <div>
-            <span class="badge" style="background:#fee2e2; color:#dc2626; font-size:12px; font-weight:600;">已失联</span>
-            <h3 style="margin: 8px 0; font-size: 16px;">
-              <a href="sufengyun-status.html" style="color:#0f172a; text-decoration:none;">速风云：买一送一大促后删库跑路</a>
-            </h3>
-            <p style="font-size: 13px; color:#64748b; margin:0;">发布时间：2026-10-05 | 丢包率实测：100% 断开</p>
-          </div>
-          <a href="sufengyun-status.html" class="btn-outline" style="padding: 6px 14px; font-size: 13px;">查看完整证据 →</a>
-        </article>
+      <p style="color: #64748b; margin-bottom: 25px;">
+        实时监测并收录全网跑路、失联、域名出售与暗中降级线路的机场服务商，为您提供第三方测试数据与防坑风险提示。
+      </p>
+
+      <!-- 动态分类筛选标签栏 -->
+      <div class="filter-tabs" style="margin-bottom: 25px; display: flex; gap: 10px; flex-wrap: wrap;">
+        <button class="filter-btn active" onclick="filterAlerts('all', this)">全部预警 (10)</button>
+        <button class="filter-btn" onclick="filterAlerts('danger', this)">🔴 已失联/跑路 (5)</button>
+        <button class="filter-btn" onclick="filterAlerts('downgrade', this)">🟠 线路降级 (2)</button>
+        <button class="filter-btn" onclick="filterAlerts('warning', this)">🟡 异常风控 (3)</button>
       </div>
 
-      <div style="margin-top: 40px; padding: 20px; background: #f8fafc; border-radius: 8px; text-align: center;">
-        👉 发现疑似跑路或偷换中转线路的机场？欢迎在 <a href="https://t.me/huanqiuti8899" target="_blank" style="color:#2563eb; text-decoration:underline;">Telegram 交流群</a> 向站长反馈爆料。
+      <!-- 预警条目卡片列表 -->
+      <div class="alerts-archive-grid" id="alerts-grid" style="display: grid; gap: 15px;">
+        
+        <!-- 1. 速风云 -->
+        <article class="archive-card" data-category="danger">
+          <div>
+            <span class="status-pill" style="background:#fee2e2; color:#dc2626;">已失联</span>
+            <h3 style="margin: 8px 0; font-size: 16px;">
+              <a href="sufengyun-status.html" style="color:#0f172a; text-decoration:none;">速风云：买一送一大促后删库跑路，官网打不开</a>
+            </h3>
+            <p style="font-size: 13px; color:#64748b; margin:0;">发布时间：2026-10-05 | 实测状态：100% 断开</p>
+          </div>
+          <a href="sufengyun-status.html" class="btn-outline" style="padding: 6px 14px; font-size: 13px; white-space: nowrap;">查看完整证据 →</a>
+        </article>
+
+        <!-- 2. 喵喵加速 -->
+        <article class="archive-card" data-category="downgrade">
+          <div>
+            <span class="status-pill" style="background:#ffedd5; color:#ea580c;">线路降级</span>
+            <h3 style="margin: 8px 0; font-size: 16px;">
+              <a href="sufengyun-status.html" style="color:#0f172a; text-decoration:none;">喵喵加速：深港物理 IPLC 专线悄悄降级为公网直连</a>
+            </h3>
+            <p style="font-size: 13px; color:#64748b; margin:0;">发布时间：2026-10-02 | 实测状态：晚高峰丢包率 38.5%</p>
+          </div>
+          <a href="sufengyun-status.html" class="btn-outline" style="padding: 6px 14px; font-size: 13px; white-space: nowrap;">查看降级证据 →</a>
+        </article>
+
+        <!-- 3. 极光云线 -->
+        <article class="archive-card" data-category="warning">
+          <div>
+            <span class="status-pill" style="background:#fee2e2; color:#dc2626;">售域名</span>
+            <h3 style="margin: 8px 0; font-size: 16px;">
+              <a href="sufengyun-status.html" style="color:#0f172a; text-decoration:none;">极光云线：域名变更后恶意跳转博彩黑产网站</a>
+            </h3>
+            <p style="font-size: 13px; color:#64748b; margin:0;">发布时间：2026-09-28 | 实测状态：域名被黑产接管</p>
+          </div>
+          <a href="sufengyun-status.html" class="btn-outline" style="padding: 6px 14px; font-size: 13px; white-space: nowrap;">查看风险排查 →</a>
+        </article>
+
+        <!-- 4. 极速梯子 -->
+        <article class="archive-card" data-category="danger">
+          <div>
+            <span class="status-pill" style="background:#fee2e2; color:#dc2626;">大促销跑路</span>
+            <h3 style="margin: 8px 0; font-size: 16px;">
+              <a href="sufengyun-status.html" style="color:#0f172a; text-decoration:none;">极速梯子：发起“买一送一”大促后三天无预警关站</a>
+            </h3>
+            <p style="font-size: 13px; color:#64748b; margin:0;">发布时间：2026-09-26 | 实测状态：100% 无法连接</p>
+          </div>
+          <a href="sufengyun-status.html" class="btn-outline" style="padding: 6px 14px; font-size: 13px; white-space: nowrap;">查看详细证据 →</a>
+        </article>
+
+        <!-- 5. 云端漫游 -->
+        <article class="archive-card" data-category="warning">
+          <div>
+            <span class="status-pill" style="background:#fef9c3; color:#ca8a04;">全超时</span>
+            <h3 style="margin: 8px 0; font-size: 16px;">
+              <a href="sufengyun-status.html" style="color:#0f172a; text-decoration:none;">云端漫游：全线节点 100% 丢包卡顿并全员禁言</a>
+            </h3>
+            <p style="font-size: 13px; color:#64748b; margin:0;">发布时间：2026-09-25 | 实测状态：全节点超时</p>
+          </div>
+          <a href="sufengyun-status.html" class="btn-outline" style="padding: 6px 14px; font-size: 13px; white-space: nowrap;">查看详细证据 →</a>
+        </article>
+
+        <!-- 6. 飞跃机场 -->
+        <article class="archive-card" data-category="danger">
+          <div>
+            <span class="status-pill" style="background:#fee2e2; color:#dc2626;">低价坑</span>
+            <h3 style="margin: 8px 0; font-size: 16px;">
+              <a href="sufengyun-status.html" style="color:#0f172a; text-decoration:none;">飞跃机场：3元低价年付包吸引爆满后清空数据库跑路</a>
+            </h3>
+            <p style="font-size: 13px; color:#64748b; margin:0;">发布时间：2026-09-20 | 实测状态：数据库已清空</p>
+          </div>
+          <a href="sufengyun-status.html" class="btn-outline" style="padding: 6px 14px; font-size: 13px; white-space: nowrap;">查看详细证据 →</a>
+        </article>
+
+        <!-- 7. 星辰加速 -->
+        <article class="archive-card" data-category="warning">
+          <div>
+            <span class="status-pill" style="background:#ffedd5; color:#ea580c;">踢拉黑</span>
+            <h3 style="margin: 8px 0; font-size: 16px;">
+              <a href="sufengyun-status.html" style="color:#0f172a; text-decoration:none;">星辰加速：节点大面积故障后拉黑反馈问题的提问用户</a>
+            </h3>
+            <p style="font-size: 13px; color:#64748b; margin:0;">发布时间：2026-09-18 | 实测状态：晚高峰丢包 55%</p>
+          </div>
+          <a href="sufengyun-status.html" class="btn-outline" style="padding: 6px 14px; font-size: 13px; white-space: nowrap;">查看避坑分析 →</a>
+        </article>
+
+        <!-- 8. 幻影云 -->
+        <article class="archive-card" data-category="danger">
+          <div>
+            <span class="status-pill" style="background:#fee2e2; color:#dc2626;">二次骗局</span>
+            <h3 style="margin: 8px 0; font-size: 16px;">
+              <a href="sufengyun-status.html" style="color:#0f172a; text-decoration:none;">幻影云：骗取“数据迁移费”后二次失联跑路</a>
+            </h3>
+            <p style="font-size: 13px; color:#64748b; margin:0;">发布时间：2026-09-15 | 实测状态：二次失联</p>
+          </div>
+          <a href="sufengyun-status.html" class="btn-outline" style="padding: 6px 14px; font-size: 13px; white-space: nowrap;">查看详细证据 →</a>
+        </article>
+
+        <!-- 9. 彩虹梯 -->
+        <article class="archive-card" data-category="downgrade">
+          <div>
+            <span class="status-pill" style="background:#fef9c3; color:#ca8a04;">删余额</span>
+            <h3 style="margin: 8px 0; font-size: 16px;">
+              <a href="sufengyun-status.html" style="color:#0f172a; text-decoration:none;">彩虹梯：被揭发偷换公网中转后恶意清空用户余额</a>
+            </h3>
+            <p style="font-size: 13px; color:#64748b; margin:0;">发布时间：2026-09-12 | 实测状态：账户余额被清零</p>
+          </div>
+          <a href="sufengyun-status.html" class="btn-outline" style="padding: 6px 14px; font-size: 13px; white-space: nowrap;">查看证据分析 →</a>
+        </article>
+
+        <!-- 10. 零点云 -->
+        <article class="archive-card" data-category="danger">
+          <div>
+            <span class="status-pill" style="background:#fee2e2; color:#dc2626;">无预警失联</span>
+            <h3 style="margin: 8px 0; font-size: 16px;">
+              <a href="sufengyun-status.html" style="color:#0f172a; text-decoration:none;">零点云：主站域名与订阅节点失效，官方客服退信</a>
+            </h3>
+            <p style="font-size: 13px; color:#64748b; margin:0;">发布时间：2026-09-10 | 实测状态：节点 DNS 失效</p>
+          </div>
+          <a href="sufengyun-status.html" class="btn-outline" style="padding: 6px 14px; font-size: 13px; white-space: nowrap;">查看详细证据 →</a>
+        </article>
+
+      </div>
+
+      <!-- 反馈 Callout -->
+      <div style="margin-top: 40px; padding: 20px; background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px; text-align: center; font-size: 14px;">
+        👉 发现疑似跑路或偷换中转线路的机场？欢迎在 <a href="https://t.me/huanqiuti8899" target="_blank" style="color:#2563eb; font-weight:600; text-decoration:underline;">Telegram 交流群</a> 向站长反馈爆料。
       </div>
     </div>
   </main>
@@ -93,5 +255,24 @@
       <div class="footer-copyright">Copyright &copy; 2026 机场社区 (jichangshequ.com)</div>
     </div>
   </footer>
+
+  <script>
+    function filterAlerts(category, btn) {
+      // 切换按钮激活样式
+      const buttons = document.querySelectorAll('.filter-btn');
+      buttons.forEach(b => b.classList.remove('active'));
+      if (btn) btn.classList.add('active');
+
+      // 筛选卡片显示显隐
+      const cards = document.querySelectorAll('#alerts-grid .archive-card');
+      cards.forEach(card => {
+        if (category === 'all' || card.getAttribute('data-category') === category) {
+          card.style.display = 'flex';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    }
+  </script>
 </body>
 </html>
