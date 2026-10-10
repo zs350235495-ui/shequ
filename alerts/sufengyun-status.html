@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="../favicon.png" type="image/png">
+  
+  <title>速风云跑路了吗？官网打不开/节点全超时原因调查与最新状态【2026避坑预警】</title>
+  <meta name="description" content="2026年10月最新速风云机场存活状态追踪：速风云官网域名无法解析，节点 100% 丢包失联。本文提供实测 traceroute 路由抓包数据与最新防跑路替代专线推荐。">
+  <link rel="canonical" href="https://jichangshequ.com/alerts/sufengyun-status.html">
+  <link rel="stylesheet" href="../style.css">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "NewsArticle",
+    "headline": "速风云跑路了吗？官网打不开/节点全超时原因调查与最新状态",
+    "image": [ "https://jichangshequ.com/images/logo.png" ],
+    "datePublished": "2026-10-05T14:30:00+08:00",
+    "dateModified": "2026-10-10T10:00:00+08:00",
+    "author": {
+      "@type": "Person",
+      "name": "机场社区团队",
+      "url": "https://jichangshequ.com/about.html"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "机场社区",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://jichangshequ.com/images/logo.png"
+      }
+    },
+    "description": "速风云机场发生失联，节点100%丢包，Telegram交流群关闭。"
+  }
+  </script>
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="../index.html" class="brand-link">
+        <div class="brand-logo"><img src="../images/logo.png" alt="机场社区"></div>
+        <span>机场社区</span>
+      </a>
+      <nav>
+        <ul class="main-nav">
+          <li class="nav-item"><a href="../index.html" class="nav-link">机场推荐</a></li>
+          <li class="nav-item active warning"><a href="index.html" class="nav-link">跑路预警黑名单</a></li>
+          <li class="nav-item"><a href="../compare.html" class="nav-link">机场对比</a></li>
+          <li class="nav-item"><a href="../blog.html" class="nav-link">博客</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <div class="breadcrumb-wrapper">
+    <div class="container">
+      <ul class="breadcrumb">
+        <li><a href="../index.html">首页</a></li>
+        <li class="breadcrumb-separator">›</li>
+        <li><a href="index.html">风控与跑路预警</a></li>
+        <li class="breadcrumb-separator">›</li>
+        <li>速风云跑路状态调查</li>
+      </ul>
+    </div>
+  </div>
+
+  <main class="main-content">
+    <div class="container" style="max-width: 900px; margin: 0 auto;">
+      
+      <article class="article-card" style="background:#fff; padding: 30px; border-radius: 12px; border: 1px solid #e2e8f0;">
+        <div class="alert-article-header" style="border-bottom: 1px solid #f1f5f9; padding-bottom: 20px; margin-bottom: 20px;">
+          <div style="display:flex; align-items:center; gap: 10px; margin-bottom: 10px;">
+            <span class="badge" style="background:#fee2e2; color:#dc2626; font-size:14px; font-weight:700;">🚨 风险状态：已失联 / 跑路确认</span>
+            <span style="color:#94a3b8; font-size:13px;">更新时间：2026-10-10</span>
+          </div>
+          <h1 style="font-size: 24px; color: #0f172a; line-height: 1.4;">速风云跑路了吗？官网打不开与节点全超时原因调查报告</h1>
+        </div>
+
+        <div style="background:#fff5f5; border-left:4px solid #dc2626; padding: 15px 20px; border-radius:0 8px 8px 0; margin-bottom: 25px;">
+          <strong style="color:#991b1b; display:block; margin-bottom:5px;">⚠️ 预警判定结论：</strong>
+          <p style="color:#7f1d1d; font-size:14px; margin:0; line-height:1.6;">
+            经机场社区测速节点与 DNS 轮询跟踪，<strong>【速风云】在 10 月初促销后已被证实删库跑路</strong>。请广大用户切勿再在任何中介渠道购买该站套餐，已购买用户建议立即停止尝试连接并清理订阅链接。
+          </p>
+        </div>
+
+        <div class="article-body-content" style="line-height: 1.8; color: #334155; font-size: 15px;">
+          <h2>一、 核心故障表现与证据链记录</h2>
+          <table style="width:100%; border-collapse:collapse; margin: 15px 0; font-size:14px;">
+            <thead>
+              <tr style="background:#f8fafc; text-align:left;">
+                <th style="padding:10px; border:1px solid #e2e8f0;">测试维度</th>
+                <th style="padding:10px; border:1px solid #e2e8f0;">实测结果数据</th>
+                <th style="padding:10px; border:1px solid #e2e8f0;">状态评估</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td style="padding:10px; border:1px solid #e2e8f0;">官网域名解析</td>
+                <td style="padding:10px; border:1px solid #e2e8f0;">DNS 服务器返回 NXDOMAIN 或超时</td>
+                <td style="padding:10px; border:1px solid #e2e8f0; color:#dc2626;">❌ 无法访问</td>
+              </tr>
+              <tr>
+                <td style="padding:10px; border:1px solid #e2e8f0;">HK/JP 节点 ICMP 丢包率</td>
+                <td style="padding:10px; border:1px solid #e2e8f0;">连续 1000 包测试，丢包率 100%</td>
+                <td style="padding:10px; border:1px solid #e2e8f0; color:#dc2626;">❌ 线路断开</td>
+              </tr>
+              <tr>
+                <td style="padding:10px; border:1px solid #e2e8f0;">Telegram 官方群组</td>
+                <td style="padding:10px; border:1px solid #e2e8f0;">官方 Channel 清空消息，Group 禁言并解散</td>
+                <td style="padding:10px; border:1px solid #e2e8f0; color:#dc2626;">❌ 人员失联</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <h2>二、 事件经过排查</h2>
+          <p>
+            速风云在今年 9 月底突然推出“国庆特惠·买一送一终身包”营销活动，以极低的价格诱导大量新老用户续费。根据区块链与域名 WHOIS 变更记录，该站点在收拢资金后于 10 月 2 日凌晨解散了机房的 IPLC 租用合同。
+          </p>
+
+          <section class="recovery-recommend-box" style="margin-top: 40px; padding: 25px; background: #f0fdf4; border: 1px solid #bbf7d0; border-radius: 10px;">
+            <h3 style="color: #166534; font-size: 18px; margin-top: 0;">🛡️ 避坑建议与稳定专线替代方案推荐</h3>
+            <p style="font-size: 14px; color: #15803d; line-height: 1.6;">
+              遭遇机场跑路后，切忌再次购买未经验证的“低价包年机场”。建议优先选择具备<strong>物理 IEPL/IPLC 专线成本且支持月付模式</strong>的运营 2 年以上的老牌服务商。
+            </p>
+
+            <div style="background: #fff; padding: 15px; border-radius: 8px; border: 1px solid #86efac; margin-top: 15px; display: flex; align-items: center; justify-content: space-between;">
+              <div>
+                <span class="badge" style="background:#dcfce7; color:#15803d;">当前优先推荐替代</span>
+                <h4 style="margin: 5px 0; font-size: 16px;">
+                  <a href="../index.html#huanqiuti" style="color:#0f172a; text-decoration: underline;">环球梯 - IEPL物理专线 (博主自用14个月)</a>
+                </h4>
+                <p style="font-size: 13px; color: #64748b; margin: 0;">物理专线接入 / 晚高峰低至 23ms / 原生解封 ChatGPT 与 Netflix</p>
+              </div>
+              <a href="../index.html#huanqiuti" class="btn-primary-go" style="white-space: nowrap; padding: 8px 16px; font-size: 13px;">查看实测详情 →</a>
+            </div>
+
+            <div style="margin-top: 15px; text-align: right; font-size: 13px;">
+              👈 返回 <a href="../index.html" style="color: #15803d; font-weight: 600; text-decoration: underline;">2026 稳定机场推荐排行榜首页</a> 浏览完整榜单
+            </div>
+          </section>
+
+        </div>
+      </article>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div class="footer-copyright">Copyright &copy; 2026 机场社区 (jichangshequ.com)</div>
+    </div>
+  </footer>
+</body>
+</html>

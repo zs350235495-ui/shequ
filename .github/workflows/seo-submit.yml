@@ -1,0 +1,29 @@
+name: Automatic SEO Indexing Pipeline
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  indexnow-submit:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Generate Alerts Sitemap
+        run: node scripts/generate-alerts.js
+
+      - name: Submit URLs to IndexNow (Bing, Yandex)
+        run: node scripts/submit-indexnow.js
+
+      - name: Trigger Google Indexing Ping
+        run: |
+          curl -s "https://www.google.com/ping?sitemap=https://jichangshequ.com/sitemap.xml"
+          echo "✅ Google Sitemap Ping Done"

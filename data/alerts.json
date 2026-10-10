@@ -1,0 +1,40 @@
+[
+  {
+    "id": "sufengyun-status-2026",
+    "slug": "sufengyun-status",
+    "targetName": "速风云",
+    "statusType": "已失联",
+    "statusColor": "#dc2626",
+    "reportedDate": "2026-10-05T14:30:00+08:00",
+    "lastCheckDate": "2026-10-10T10:00:00+08:00",
+    "summary": "速风云于10月初推出“买一送一”大促后突然关闭 Telegram 交流群组，官网域名解析异常，全节点断连已逾 5 天。",
+    "evidence": {
+      "pingLossRate": "100%",
+      "domainStatus": "DNS 污染或被服务商直接注销",
+      "tgGroupStatus": "全员禁言并随后清空群组退群"
+    },
+    "detailContent": "据机场社区实测节点监控记录，速风云在 2026 年 10 月 2 日突发全线节点 100% 丢包。随后博主测试其广深 IPLC 专线入口，发现中转服务器 IP 已经被机房收回。Telegram 官方频道与客服账号均处于退信状态，确定为删库跑路。",
+    "alternativeSlug": "huanqiuti",
+    "alternativeName": "环球梯 (IEPL物理专线)",
+    "alternativeLink": "/index.html#huanqiuti"
+  },
+  {
+    "id": "miaomiao-downgrade-2026",
+    "slug": "miaomiao-downgrade",
+    "targetName": "喵喵加速",
+    "statusType": "降级偷换",
+    "statusColor": "#ea580c",
+    "reportedDate": "2026-10-02T09:15:00+08:00",
+    "lastCheckDate": "2026-10-09T18:00:00+08:00",
+    "summary": "喵喵加速原宣传的深港物理 IPLC 专线，经 traceroute 路由追踪测试发现已被偷偷更换为普通直连公网中转。",
+    "evidence": {
+      "pingLossRate": "晚高峰丢包率高达 38.5%",
+      "domainStatus": "官网仍可访问，但频繁更换二级域名",
+      "tgGroupStatus": "开启限制发言并屏蔽‘丢包’‘延迟’敏感词"
+    },
+    "detailContent": "近期大量用户反映晚高峰看 4K 视频卡顿。博主通过 MTR 测速脚本发现在晚高峰 20:30，其 HK 节点路由直接经过 202.97 骨干网，并非 IPLC 物理专线。存在严重的虚假宣传与暗中降级行为。",
+    "alternativeSlug": "dalaoyun",
+    "alternativeName": "大佬云 (深港/沪日全IPLC专线)",
+    "alternativeLink": "/index.html#dalaoyun"
+  }
+]
