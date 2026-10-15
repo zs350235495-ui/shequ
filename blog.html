@@ -171,19 +171,24 @@
       </div>
 
       <!-- 分类标签 -->
-      <div class="blog-categories">
-        <a href="#all" class="category-tab active">全部文章 (45篇)</a>
-        <a href="#selection" class="category-tab">选购与推荐</a>
-        <a href="#lines" class="category-tab">线路与性能</a>
-        <a href="#clients" class="category-tab">客户端与教程</a>
-        <a href="#scenarios" class="category-tab">应用场景解锁</a>
+      <div id="all"></div>
+      <div id="selection"></div>
+      <div id="lines"></div>
+      <div id="clients"></div>
+      <div id="scenarios"></div>
+      <div class="blog-categories" id="blog-categories">
+        <a href="#all" class="category-tab active" data-cat="all" onclick="filterCategory('all', this, event)">全部文章 (45篇)</a>
+        <a href="#selection" class="category-tab" data-cat="selection" onclick="filterCategory('selection', this, event)">选购与推荐</a>
+        <a href="#lines" class="category-tab" data-cat="lines" onclick="filterCategory('lines', this, event)">线路与性能</a>
+        <a href="#clients" class="category-tab" data-cat="clients" onclick="filterCategory('clients', this, event)">客户端与教程</a>
+        <a href="#scenarios" class="category-tab" data-cat="scenarios" onclick="filterCategory('scenarios', this, event)">应用场景解锁</a>
       </div>
 
       <!-- 45 篇文章列表网格 -->
       <div class="blog-grid">
 
         <!-- 1. art-45 -->
-        <article class="blog-card">
+        <article class="blog-card" data-category="lines">
           <div>
             <div class="blog-card-meta">
               <span class="badge badge-primary">技术白皮书</span>
@@ -199,7 +204,7 @@
         </article>
 
         <!-- 2. art-44 -->
-        <article class="blog-card">
+        <article class="blog-card" data-category="selection">
           <div>
             <div class="blog-card-meta">
               <span class="badge badge-primary">测评方法论</span>
@@ -215,7 +220,7 @@
         </article>
 
         <!-- 2. art-43 -->
-        <article class="blog-card">
+        <article class="blog-card" data-category="selection">
           <div>
             <div class="blog-card-meta">
               <span class="badge badge-green">硬核专线指南</span>
@@ -231,7 +236,7 @@
         </article>
 
         <!-- 3. art-42 -->
-        <article class="blog-card">
+        <article class="blog-card" data-category="selection">
           <div>
             <div class="blog-card-meta">
               <span class="badge badge-green">深度评测与选购</span>
@@ -246,7 +251,7 @@
           </div>
         </article>
 
-<article class="blog-card">
+<article class="blog-card" data-category="selection">
           <div>
             <div class="blog-card-meta">
               <span class="badge badge-green">选购指南</span>
@@ -261,7 +266,7 @@
           </div>
         </article>
 
-<article class="blog-card">
+<article class="blog-card" data-category="scenarios">
           <div>
             <div class="blog-card-meta">
               <span class="badge badge-green">跨境网络</span>
@@ -276,7 +281,7 @@
           </div>
         </article>
 
-<article class="blog-card">
+<article class="blog-card" data-category="selection">
           <div>
             <div class="blog-card-meta">
               <span class="badge badge-blue">常见问题</span>
@@ -291,7 +296,7 @@
           </div>
         </article>
 
-<article class="blog-card">
+<article class="blog-card" data-category="scenarios">
           <div>
             <div class="blog-card-meta">
               <span class="badge badge-primary">跨境网络</span>
@@ -306,7 +311,7 @@
           </div>
         </article>
 
-<article class="blog-card">
+<article class="blog-card" data-category="scenarios">
           <div>
             <div class="blog-card-meta">
               <span class="badge badge-gray">手机电脑同步</span>
@@ -321,7 +326,7 @@
           </div>
         </article>
 
-<article class="blog-card">
+<article class="blog-card" data-category="scenarios">
           <div>
             <div class="blog-card-meta">
               <span class="badge badge-green">家庭共享网络</span>
@@ -336,7 +341,7 @@
           </div>
         </article>
 
-<article class="blog-card">
+<article class="blog-card" data-category="scenarios">
           <div>
             <div class="blog-card-meta">
               <span class="badge badge-blue">游戏加速体验</span>
@@ -351,7 +356,7 @@
           </div>
         </article>
 
-<article class="blog-card">
+<article class="blog-card" data-category="scenarios">
           <div>
             <div class="blog-card-meta">
               <span class="badge badge-primary">海外学习网络</span>
@@ -366,7 +371,7 @@
           </div>
         </article>
 
-<article class="blog-card">
+<article class="blog-card" data-category="scenarios">
           <div>
             <div class="blog-card-meta">
               <span class="badge badge-gray">远程办公网络</span>
@@ -381,7 +386,7 @@
           </div>
         </article>
 
-<article class="blog-card">
+<article class="blog-card" data-category="scenarios">
           <div>
             <div class="blog-card-meta">
               <span class="badge badge-green">流媒体体验</span>
@@ -396,7 +401,7 @@
           </div>
         </article>
 
-<article class="blog-card">
+<article class="blog-card" data-category="scenarios">
           <div>
             <div class="blog-card-meta">
               <span class="badge badge-blue">AI 工具网络体验</span>
@@ -411,7 +416,7 @@
           </div>
         </article>
 
-<article class="blog-card">
+<article class="blog-card" data-category="clients">
           <div>
             <div class="blog-card-meta">
               <span class="badge badge-primary">客户端设置</span>
@@ -426,7 +431,7 @@
           </div>
         </article>
 
-<article class="blog-card">
+<article class="blog-card" data-category="clients">
           <div>
             <div class="blog-card-meta">
               <span class="badge badge-gray">订阅链接</span>
@@ -441,7 +446,7 @@
           </div>
         </article>
 
-<article class="blog-card">
+<article class="blog-card" data-category="clients">
           <div>
             <div class="blog-card-meta">
               <span class="badge badge-green">Clash Meta 教程</span>
@@ -456,7 +461,7 @@
           </div>
         </article>
 
-<article class="blog-card">
+<article class="blog-card" data-category="clients">
           <div>
             <div class="blog-card-meta">
               <span class="badge badge-blue">多设备配置</span>
@@ -471,7 +476,7 @@
           </div>
         </article>
 
-<article class="blog-card">
+<article class="blog-card" data-category="clients">
           <div>
             <div class="blog-card-meta">
               <span class="badge badge-primary">连接失败排查</span>
@@ -486,7 +491,7 @@
           </div>
         </article>
 
-<article class="blog-card">
+<article class="blog-card" data-category="clients">
           <div>
             <div class="blog-card-meta">
               <span class="badge badge-green">v2rayN 教程</span>
@@ -501,7 +506,7 @@
           </div>
         </article>
 
-<article class="blog-card">
+<article class="blog-card" data-category="clients">
           <div>
             <div class="blog-card-meta">
               <span class="badge badge-blue">Shadowrocket 教程</span>
@@ -516,7 +521,7 @@
           </div>
         </article>
 
-<article class="blog-card">
+<article class="blog-card" data-category="clients">
           <div>
             <div class="blog-card-meta">
               <span class="badge badge-primary">Clash Party 教程</span>
@@ -531,7 +536,7 @@
           </div>
         </article>
 
-<article class="blog-card">
+<article class="blog-card" data-category="clients">
           <div>
             <div class="blog-card-meta">
               <span class="badge badge-gray">Clash Verge 教程</span>
@@ -546,7 +551,7 @@
           </div>
         </article>
 
-<article class="blog-card">
+<article class="blog-card" data-category="clients">
           <div>
             <div class="blog-card-meta">
               <span class="badge badge-green">Clash 教程</span>
@@ -561,7 +566,7 @@
           </div>
         </article>
 
-<article class="blog-card">
+<article class="blog-card" data-category="lines">
           <div>
             <div class="blog-card-meta">
               <span class="badge badge-blue">线路质量</span>
@@ -576,7 +581,7 @@
           </div>
         </article>
 
-<article class="blog-card">
+<article class="blog-card" data-category="lines">
           <div>
             <div class="blog-card-meta">
               <span class="badge badge-primary">中转线路</span>
@@ -591,7 +596,7 @@
           </div>
         </article>
 
-<article class="blog-card">
+<article class="blog-card" data-category="lines">
           <div>
             <div class="blog-card-meta">
               <span class="badge badge-gray">节点速度</span>
@@ -606,7 +611,7 @@
           </div>
         </article>
 
-<article class="blog-card">
+<article class="blog-card" data-category="lines">
           <div>
             <div class="blog-card-meta">
               <span class="badge badge-green">IPLC 专线</span>
@@ -621,7 +626,7 @@
           </div>
         </article>
 
-<article class="blog-card">
+<article class="blog-card" data-category="lines">
           <div>
             <div class="blog-card-meta">
               <span class="badge badge-blue">多地区节点</span>
@@ -636,7 +641,7 @@
           </div>
         </article>
 
-<article class="blog-card">
+<article class="blog-card" data-category="lines">
           <div>
             <div class="blog-card-meta">
               <span class="badge badge-primary">网络质量</span>
@@ -651,7 +656,7 @@
           </div>
         </article>
 
-<article class="blog-card">
+<article class="blog-card" data-category="lines">
           <div>
             <div class="blog-card-meta">
               <span class="badge badge-gray">节点覆盖</span>
@@ -666,7 +671,7 @@
           </div>
         </article>
 
-<article class="blog-card">
+<article class="blog-card" data-category="lines">
           <div>
             <div class="blog-card-meta">
               <span class="badge badge-green">流量倍率</span>
@@ -681,7 +686,7 @@
           </div>
         </article>
 
-<article class="blog-card">
+<article class="blog-card" data-category="lines">
           <div>
             <div class="blog-card-meta">
               <span class="badge badge-blue">晚高峰表现</span>
@@ -696,7 +701,7 @@
           </div>
         </article>
 
-<article class="blog-card">
+<article class="blog-card" data-category="lines">
           <div>
             <div class="blog-card-meta">
               <span class="badge badge-primary">IEPL 专线</span>
@@ -711,7 +716,7 @@
           </div>
         </article>
 
-<article class="blog-card">
+<article class="blog-card" data-category="selection">
           <div>
             <div class="blog-card-meta">
               <span class="badge badge-green">新手机场</span>
@@ -726,7 +731,7 @@
           </div>
         </article>
 
-<article class="blog-card">
+<article class="blog-card" data-category="lines">
           <div>
             <div class="blog-card-meta">
               <span class="badge badge-blue">专线节点</span>
@@ -741,7 +746,7 @@
           </div>
         </article>
 
-<article class="blog-card">
+<article class="blog-card" data-category="selection">
           <div>
             <div class="blog-card-meta">
               <span class="badge badge-primary">便宜机场</span>
@@ -756,7 +761,7 @@
           </div>
         </article>
 
-<article class="blog-card">
+<article class="blog-card" data-category="selection">
           <div>
             <div class="blog-card-meta">
               <span class="badge badge-gray">流量套餐</span>
@@ -771,7 +776,7 @@
           </div>
         </article>
 
-<article class="blog-card">
+<article class="blog-card" data-category="selection">
           <div>
             <div class="blog-card-meta">
               <span class="badge badge-green">稳定机场</span>
@@ -786,7 +791,7 @@
           </div>
         </article>
 
-<article class="blog-card">
+<article class="blog-card" data-category="selection">
           <div>
             <div class="blog-card-meta">
               <span class="badge badge-blue">多设备使用</span>
@@ -801,7 +806,7 @@
           </div>
         </article>
 
-<article class="blog-card">
+<article class="blog-card" data-category="selection">
           <div>
             <div class="blog-card-meta">
               <span class="badge badge-primary">跑路预警</span>
@@ -816,7 +821,7 @@
           </div>
         </article>
 
-<article class="blog-card">
+<article class="blog-card" data-category="selection">
           <div>
             <div class="blog-card-meta">
               <span class="badge badge-green">性价比机场</span>
@@ -831,7 +836,7 @@
           </div>
         </article>
 
-<article class="blog-card">
+<article class="blog-card" data-category="selection">
           <div>
             <div class="blog-card-meta">
               <span class="badge badge-blue">机场避坑</span>
@@ -846,7 +851,7 @@
           </div>
         </article>
 
-<article class="blog-card">
+<article class="blog-card" data-category="selection">
           <div>
             <div class="blog-card-meta">
               <span class="badge badge-primary">机场推荐</span>

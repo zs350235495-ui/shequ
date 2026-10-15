@@ -25,7 +25,13 @@ function buildAlertsSitemap() {
   xml += `    <priority>0.9</priority>\n`;
   xml += `  </url>\n`;
 
+  let includedCount = 1;
   alertsData.forEach(item => {
+    const pagePath = path.join(__dirname, `../alerts/${item.slug}.html`);
+    if (!fs.existsSync(pagePath)) {
+      console.warn(`⚠️ 跳过不存在的预警详情页: alerts/${item.slug}.html (避免产生404死链)`);
+      return;
+    }
     const lastMod = item.lastCheckDate || item.reportedDate || nowISO;
     xml += `  <url>\n`;
     xml += `    <loc>${DOMAIN}/alerts/${item.slug}.html</loc>\n`;
@@ -33,12 +39,13 @@ function buildAlertsSitemap() {
     xml += `    <changefreq>weekly</changefreq>\n`;
     xml += `    <priority>0.8</priority>\n`;
     xml += `  </url>\n`;
+    includedCount++;
   });
 
   xml += `</urlset>`;
 
   fs.writeFileSync(SITEMAP_ALERTS_PATH, xml, 'utf-8');
-  console.log(`✅ 已成功生成 sitemap-alerts.xml，包含 ${alertsData.length + 1} 条 URLs`);
+  console.log(`✅ 已成功生成 sitemap-alerts.xml，包含 ${includedCount} 条真实有效 URLs`);
 }
 
 buildAlertsSitemap();
