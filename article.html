@@ -144,6 +144,9 @@
   "art-45-wangaofeng-wangluo-bodong-baogao": "articles/art-45-wangaofeng-wangluo-bodong-baogao.html",
   "art-45": "articles/art-45-wangaofeng-wangluo-bodong-baogao.html",
   "art45": "articles/art-45-wangaofeng-wangluo-bodong-baogao.html",
+  "art-46-kexue-shangwang-wangluo-jiasu-bikeng-zhinan": "articles/art-46-kexue-shangwang-wangluo-jiasu-bikeng-zhinan.html",
+  "art-46": "articles/art-46-kexue-shangwang-wangluo-jiasu-bikeng-zhinan.html",
+  "art46": "articles/art-46-kexue-shangwang-wangluo-jiasu-bikeng-zhinan.html",
   "recommendation": "articles/2026-airport-recommendation.html"
 };
       const params = new URLSearchParams(window.location.search);
@@ -165,10 +168,10 @@
         }
       }
 
-      if (target) {
-        window.location.replace(target);
-      } else {
-        window.location.replace('blog.html');
+      const dest = target ? ('/' + target) : '/blog.html';
+      const curPath = window.location.pathname.toLowerCase();
+      if (curPath !== dest.toLowerCase() && !curPath.endsWith(dest.toLowerCase())) {
+        window.location.replace(dest);
       }
     })();
   </script>
