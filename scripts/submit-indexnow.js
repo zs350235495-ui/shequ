@@ -1,10 +1,13 @@
 const HOST = 'jichangshequ.com';
-const INDEXNOW_KEY = '5a4d3f2e1c0b9a8f7e6d5c4b3a2f1e0d';
+const INDEXNOW_KEY = '81447f37fc3946e2966601cdb778de1e';
 const KEY_LOCATION = `https://${HOST}/${INDEXNOW_KEY}.txt`;
 
 const urlsToSubmit = [
+  `https://${HOST}/`,
   `https://${HOST}/index.html`,
+  `https://${HOST}/reviews.html`,
   `https://${HOST}/blog.html`,
+  `https://${HOST}/sitemap.html`,
   `https://${HOST}/alerts/index.html`,
   `https://${HOST}/alerts/sufengyun-status.html`,
   `https://${HOST}/articles/art-42-2026-wending-jichang-tuijian.html`
