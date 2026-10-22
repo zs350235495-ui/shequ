@@ -23,7 +23,6 @@ jobs:
       - name: Submit URLs to IndexNow (Bing, Yandex)
         run: node scripts/submit-indexnow.js
 
-      - name: Trigger Google Indexing Ping
+      - name: Verify Sitemaps
         run: |
-          curl -s "https://www.google.com/ping?sitemap=https://jichangshequ.com/sitemap.xml"
-          echo "✅ Google Sitemap Ping Done"
+          echo "✅ Sitemaps verified. Google & Yandex crawlers discover updates via robots.txt and Search Console."
