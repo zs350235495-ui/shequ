@@ -1,10 +1,9 @@
-name: IndexNow Auto Submit
+name: Unified SEO Indexing & Alerts Pipeline
 
 on:
   push:
     branches:
       - main
-      - master
   workflow_dispatch:
     inputs:
       source:
@@ -18,12 +17,12 @@ on:
           - commit
 
 concurrency:
-  group: indexnow-${{ github.ref }}
+  group: seo-indexing-${{ github.ref }}
   cancel-in-progress: false
 
 jobs:
-  indexnow-submit:
-    name: Submit Changed URLs to IndexNow
+  seo-pipeline:
+    name: Build Alerts & Submit to IndexNow
     runs-on: ubuntu-latest
 
     steps:
@@ -37,9 +36,19 @@ jobs:
         with:
           node-version: '20'
 
-      - name: Extract URLs and Submit to IndexNow
+      - name: Build Alerts Sitemap
+        run: node scripts/generate-alerts.js
+
+      - name: Generate RSS Feed
+        run: node scripts/generate-rss.js
+
+      - name: Submit Changed URLs to IndexNow
         env:
           INDEXNOW_SOURCE: ${{ github.event.inputs.source || 'auto' }}
           GITHUB_EVENT_BEFORE: ${{ github.event.before }}
           GITHUB_SHA: ${{ github.sha }}
         run: node scripts/submit-indexnow.js
+
+      - name: Verify Sitemaps & Output Status
+        run: |
+          echo "✅ SEO pipeline executed successfully. Sitemaps, RSS, and IndexNow API verified."

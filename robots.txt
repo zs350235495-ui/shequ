@@ -2,8 +2,10 @@
 
 User-agent: *
 Allow: /
+Allow: /rss.xml
 Disallow: /go/
 
+# Sitemaps and Feeds
 Sitemap: https://jichangshequ.com/sitemap.xml
 Sitemap: https://jichangshequ.com/sitemap-alerts.xml
-
+# RSS Feed: https://jichangshequ.com/rss.xml

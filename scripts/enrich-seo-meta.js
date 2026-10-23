@@ -44,7 +44,8 @@ function processHtmlFile(filePath) {
 
   // 提取 title
   const titleMatch = content.match(/<title>([^<]*)<\/title>/i);
-  const title = titleMatch ? titleMatch[1].trim() : '机场社区 - 2026 稳定节点评测与跑路预警';
+  const rawTitle = titleMatch ? titleMatch[1].trim() : '机场社区 - 2026 稳定节点评测与跑路预警';
+  const cleanTitle = rawTitle.replace(/\s*[-|_|\|]\s*机场社区.*$/i, '').trim();
 
   // 提取 description
   const descMatch = content.match(/<meta\s+name=["']description["']\s+content=["']([^"']*)["']/i);
@@ -60,7 +61,6 @@ function processHtmlFile(filePath) {
   // 1. 检查并补充 / 纠正 canonical
   const canonicalMatch = content.match(/<link\s+rel=["']canonical["'][^>]*>/i);
   if (!canonicalMatch) {
-    // 插入在 title 或 head 开头之后
     const canonicalTag = `\n  <link rel="canonical" href="${canonicalUrl}">`;
     content = content.replace(/(<meta\s+name=["']description["'][^>]*>)/i, `$1${canonicalTag}`);
     if (!content.includes(canonicalTag)) {
@@ -74,20 +74,130 @@ function processHtmlFile(filePath) {
     console.log(`[Canonical] 纠正 index.html: ${DOMAIN}/`);
   }
 
-  // 2. 检查并补充 Open Graph & Twitter Card
+  // 2. 检查并补充 RSS 订阅源声明
+  if (!content.includes('type="application/rss+xml"') && !content.includes("type='application/rss+xml'")) {
+    const rssTag = `\n  <link rel="alternate" type="application/rss+xml" title="机场社区 RSS 订阅" href="${DOMAIN}/rss.xml">`;
+    content = content.replace(/(<link\s+rel=["']canonical["'][^>]*>)/i, `$1${rssTag}`);
+    if (!content.includes(rssTag)) {
+      content = content.replace(/<head>/i, `<head>${rssTag}`);
+    }
+    modified = true;
+    console.log(`[RSS] 添加订阅声明: ${relativePath}`);
+  }
+
+  // 3. 检查并补充文章 Schema.org JSON-LD (TechArticle + BreadcrumbList)
+  if (relativePath.startsWith('articles/')) {
+    const articleId = `${canonicalUrl}#article`;
+    const breadcrumbId = `${canonicalUrl}#breadcrumb`;
+
+    if (!content.includes('application/ld+json')) {
+      const jsonLd = `
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "TechArticle",
+        "@id": "${articleId}",
+        "headline": ${JSON.stringify(cleanTitle)},
+        "description": ${JSON.stringify(description)},
+        "inLanguage": "zh-CN",
+        "datePublished": "2026-10-10T12:00:00+08:00",
+        "dateModified": "2026-10-15T12:00:00+08:00",
+        "author": {
+          "@type": "Person",
+          "name": "机场社区网络架构与安全团队",
+          "url": "${DOMAIN}/about.html"
+        },
+        "publisher": {
+          "@type": "Organization",
+          "name": "机场社区",
+          "logo": {
+            "@type": "ImageObject",
+            "url": "${DOMAIN}/images/logo.png"
+          }
+        }
+      },
+      {
+        "@type": "BreadcrumbList",
+        "@id": "${breadcrumbId}",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "首页",
+            "item": "${DOMAIN}/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "技术专栏",
+            "item": "${DOMAIN}/blog.html"
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "name": ${JSON.stringify(cleanTitle)},
+            "item": "${canonicalUrl}"
+          }
+        ]
+      }
+    ]
+  }
+  </script>`;
+
+      content = content.replace(/<\/head>/i, `${jsonLd}\n</head>`);
+      modified = true;
+      console.log(`[Schema.org] 为文章注入 TechArticle + BreadcrumbList: ${relativePath}`);
+    } else if (!content.includes('BreadcrumbList')) {
+      // 已有 ld+json 但无 BreadcrumbList，则在现有 graph 内补充
+      const breadcrumbObj = {
+        "@type": "BreadcrumbList",
+        "@id": breadcrumbId,
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "首页",
+            "item": `${DOMAIN}/`
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "技术专栏",
+            "item": `${DOMAIN}/blog.html`
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "name": cleanTitle,
+            "item": canonicalUrl
+          }
+        ]
+      };
+      const breadcrumbStr = JSON.stringify(breadcrumbObj, null, 6).replace(/^/gm, '      ').trim();
+      content = content.replace(/("@graph"\s*:\s*\[[\s\S]*?)(\n\s*\])/i, (m, p1, p2) => {
+        return `${p1.trimEnd()},\n      ${breadcrumbStr}${p2}`;
+      });
+      modified = true;
+      console.log(`[Schema.org] 补充 BreadcrumbList: ${relativePath}`);
+    }
+  }
+
+  // 4. 检查并补充 Open Graph & Twitter Card
   if (!content.includes('property="og:title"') && !content.includes('property=\'og:title\'')) {
     const ogTags = `
   <!-- Open Graph / Facebook / Telegram Meta Tags -->
   <meta property="og:type" content="${relativePath.startsWith('articles/') ? 'article' : 'website'}">
   <meta property="og:url" content="${canonicalUrl}">
-  <meta property="og:title" content="${title.replace(/"/g, '&quot;')}">
+  <meta property="og:title" content="${rawTitle.replace(/"/g, '&quot;')}">
   <meta property="og:description" content="${description.replace(/"/g, '&quot;')}">
   <meta property="og:image" content="${defaultOgImage}">
   <meta property="og:site_name" content="机场社区">
 
   <!-- Twitter Meta Tags -->
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="${title.replace(/"/g, '&quot;')}">
+  <meta name="twitter:title" content="${rawTitle.replace(/"/g, '&quot;')}">
   <meta name="twitter:description" content="${description.replace(/"/g, '&quot;')}">
   <meta name="twitter:image" content="${defaultOgImage}">`;
 
@@ -103,6 +213,6 @@ function processHtmlFile(filePath) {
 }
 
 const htmlFiles = getHtmlFiles(ROOT_DIR);
-console.log(`共发现 ${htmlFiles.length} 个 HTML 页面，开始处理...`);
+console.log(`共发现 ${htmlFiles.length} 个 HTML 页面，开始规范化处理...`);
 htmlFiles.forEach(processHtmlFile);
 console.log('✅ 所有 HTML 规范化处理完成！');
