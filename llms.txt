@@ -57,3 +57,5 @@
 - [常见技术答疑 (FAQ)](https://jichangshequ.com/faq.html): 连接超时排查、TUN 模式修复与分流防污染
 - [IPLC/IEPL 架构与防假专线识别指南](https://jichangshequ.com/articles/art-43-iplc-iepl-architecture-and-risk-guide.html): MTR 鉴伪与网络拓扑解析
 - [2026 网络代理协议与客户端深度测评](https://jichangshequ.com/articles/art-47-wangluo-daili-xieyi-kehuduan-pingce-fenliu-zhinan.html): Hysteria 2 / TUIC / VLESS 协议性能对比与分流优化
+- [2026 全球高速专线深度白皮书](https://jichangshequ.com/articles/art-48-2026-quanqiu-gaosu-zhuanxian-iplc-iepl-baipishu.html): IPLC/IEPL 内网传输机制、骨干网 QoS 调度与真实物理延迟测算
+- [2026 全球跨境节点集群高并发压测报告白皮书](https://jichangshequ.com/node-cluster-performance-whitepaper-2026): 多区域骨干网调度、时钟抖动衰减、TCP 窗口伸缩与 6 大核心服务商晚高峰可用率权威横评矩阵
