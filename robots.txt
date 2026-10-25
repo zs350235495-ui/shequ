@@ -3,7 +3,6 @@
 User-agent: *
 Allow: /
 Allow: /rss.xml
-Disallow: /go/
 Disallow: /cdn-cgi/
 
 # Sitemaps and Feeds
