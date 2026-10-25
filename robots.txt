@@ -4,6 +4,7 @@ User-agent: *
 Allow: /
 Allow: /rss.xml
 Disallow: /go/
+Disallow: /cdn-cgi/
 
 # Sitemaps and Feeds
 Sitemap: https://jichangshequ.com/sitemap.xml
