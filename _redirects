@@ -1,0 +1,65 @@
+# ==============================================================================
+# 机场社区 (jichangshequ.com) - 统一 AFF 推广外链 301 隔离跳转配置
+# 适配环境：Cloudflare Pages / Netlify 301 状态码永久重定向
+# 特性：严格 301 状态码，支持带斜杠与不带斜杠路径
+# ==============================================================================
+
+# 1. 环球梯 (HuanQiuTi)
+/go/huanqiuti/ https://123pps01.huanqiutiaff.com/#/?code=j5VBUvw0 301
+/go/huanqiuti  https://123pps01.huanqiutiaff.com/#/?code=j5VBUvw0 301
+
+# 2. 大佬云 (DaLaoYun)
+/go/dalaoyun/  https://ppsvip01.dalaoyunaff.com/#/?code=Iz1GlCVa 301
+/go/dalaoyun   https://ppsvip01.dalaoyunaff.com/#/?code=Iz1GlCVa 301
+
+# 3. 云界线 (YunJieXian)
+/go/yunjiexian/ https://pp01.yunjiexianaff.com/#/?code=bp0ZSKBV 301
+/go/yunjiexian  https://pp01.yunjiexianaff.com/#/?code=bp0ZSKBV 301
+
+# 4. 闪电鼠 (ShanDianShu)
+/go/shandianshu/ https://ppsvip01.shandianshuaff.com/#/?code=QbLF8tjB 301
+/go/shandianshu  https://ppsvip01.shandianshuaff.com/#/?code=QbLF8tjB 301
+
+# 5. 榴莲云 (LiuLianYun)
+/go/liulianyun/ https://123pp01.liulianyunaff.com/#/?code=MsZP3u7G 301
+/go/liulianyun  https://123pp01.liulianyunaff.com/#/?code=MsZP3u7G 301
+
+# 6. 神行加速 (ShenXing)
+/go/shenxing/   https://pps123.shenxingaff.com/#/?code=6tQ7zHUc 301
+/go/shenxing    https://pps123.shenxingaff.com/#/?code=6tQ7zHUc 301
+
+# 7. 可信云 (KeXinYun)
+/go/kexinyun/   https://everett7623.kosingaff.com/#/?code=sFKkfEYs 301
+/go/kexinyun    https://everett7623.kosingaff.com/#/?code=sFKkfEYs 301
+
+# 8. 顺云 (ShunYun)
+/go/shunyun/    https://ddd.jichang.best/#/register?code=nldUZaYc 301
+/go/shunyun     https://ddd.jichang.best/#/register?code=nldUZaYc 301
+
+# 9. 云图 (YunTu)
+/go/yuntu/      https://super.ytjcok.org/#/register?code=poKwFVtv 301
+/go/yuntu       https://super.ytjcok.org/#/register?code=poKwFVtv 301
+
+# 10. 极连云 (JiLianYun)
+/go/jilianyun/  https://haozevpn.jlyvipaff.com/#/?code=jwCMOvQO 301
+/go/jilianyun   https://haozevpn.jlyvipaff.com/#/?code=jwCMOvQO 301
+
+# 11. 快狸 (KuaiLi)
+/go/kuaili/     https://fanxiaobin.kuailiaff.com/#/?code=e0cAmK7F 301
+/go/kuaili      https://fanxiaobin.kuailiaff.com/#/?code=e0cAmK7F 301
+
+# 12. 光年梯 (GuangNianTi)
+/go/guangnianti/ https://gnt001.gntvipaff.cc/#/?code=PQhPFDhO 301
+/go/guangnianti  https://gnt001.gntvipaff.cc/#/?code=PQhPFDhO 301
+
+# 13. 鲲鹏加速 (KunPeng)
+/go/kunpeng/    https://kunpengjiasu.com/#/register?code=WPugVZUe 301
+/go/kunpeng     https://kunpengjiasu.com/#/register?code=WPugVZUe 301
+
+# 14. 边缘云 (BianYuan)
+/go/bianyuan/   https://wep.edgenovaaff.com/#/?code=mLLL6h6F 301
+/go/bianyuan    https://wep.edgenovaaff.com/#/?code=mLLL6h6F 301
+
+# 15. 速捷 (SuJie)
+/go/sujie/      https://pygllc.speedworldaff.cc/#/?code=kcoensXG 301
+/go/sujie       https://pygllc.speedworldaff.cc/#/?code=kcoensXG 301
