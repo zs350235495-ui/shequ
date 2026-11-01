@@ -367,8 +367,14 @@
     <priority>1.0</priority>
   </url>
   <url>
+    <loc>https://jichangshequ.com/articles/ipv6-dual-stack-happy-eyeballs-tuning-2026.html</loc>
+    <lastmod>2026-11-01</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  <url>
     <loc>https://jichangshequ.com/rss.xml</loc>
-    <lastmod>2026-10-28</lastmod>
+    <lastmod>2026-11-01</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
   </url>
