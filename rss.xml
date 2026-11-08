@@ -5,7 +5,7 @@
     <link>https://jichangshequ.com/</link>
     <description>机场社区致力于构建公开、透明的网络节点稳定性众测与跨平台使用经验交流平台。聚焦突发阻断预警、晚高峰丢包众包反馈、工单响应 SLA 审计与避坑防跑路指南。</description>
     <language>zh-cn</language>
-    <lastBuildDate>Wed, 04 Nov 2026 06:23:19 GMT</lastBuildDate>
+    <lastBuildDate>Sun, 08 Nov 2026 05:53:16 GMT</lastBuildDate>
     <atom:link href="https://jichangshequ.com/rss.xml" rel="self" type="application/rss+xml"/>
     <item>
       <title>2026六大优质专线机场实测：环球梯/大佬云/云界线等深度测评（附7折优惠码）</title>
@@ -20,6 +20,13 @@
       <guid isPermaLink="true">https://jichangshequ.com/articles/airport-runaway-risk-identification-guide-2026.html</guid>
       <pubDate>Wed, 04 Nov 2026 04:00:00 GMT</pubDate>
       <description><![CDATA[机场社区发布2026网络加速服务避坑全景指南。深度拆解超低价年付陷阱、上游IDC欠费跑路前兆、单节点大面积红温失联特征，为广大网友提供月付保平安与节点冗余备份的理性选型策略。]]></description>
+    </item>
+    <item>
+      <title>2026敏感期防封抗封翻墙梯子与高速机场推荐横评</title>
+      <link>https://jichangshequ.com/articles/anti-blocking-disaster-recovery-airport-ladder-recommendations-2026.html</link>
+      <guid isPermaLink="true">https://jichangshequ.com/articles/anti-blocking-disaster-recovery-airport-ladder-recommendations-2026.html</guid>
+      <pubDate>Wed, 04 Nov 2026 04:00:00 GMT</pubDate>
+      <description><![CDATA[2026年特殊时期防封抗封翻墙梯子与高速机场推荐指南。深度实测全网重大网络波动与大面积红温失联下的BGP Anycast多入口容灾、物理专线防主动探测机制与应急抗灾天梯榜。]]></description>
     </item>
     <item>
       <title>2026年机场推荐指南：如何挑选稳定靠谱的专线加速服务？</title>
