@@ -5,7 +5,7 @@
     <link>https://jichangshequ.com/</link>
     <description>机场社区致力于构建公开、透明的网络节点稳定性众测与跨平台使用经验交流平台。聚焦突发阻断预警、晚高峰丢包众包反馈、工单响应 SLA 审计与避坑防跑路指南。</description>
     <language>zh-cn</language>
-    <lastBuildDate>Sun, 08 Nov 2026 06:20:51 GMT</lastBuildDate>
+    <lastBuildDate>Fri, 13 Nov 2026 11:24:41 GMT</lastBuildDate>
     <atom:link href="https://jichangshequ.com/rss.xml" rel="self" type="application/rss+xml"/>
     <item>
       <title>2026六大优质专线机场实测：环球梯/大佬云/云界线等深度测评（附7折优惠码）</title>
@@ -370,6 +370,13 @@
       <guid isPermaLink="true">https://jichangshequ.com/articles/art-49-wangluo-jiasu-zhuanxian-xuanxing-dikeng-zhinan.html</guid>
       <pubDate>Wed, 28 Oct 2026 08:20:00 GMT</pubDate>
       <description><![CDATA[2026 网络加速与专线选型底层逻辑深度指南：由一线网络架构师剖析晚高峰骨干网拥塞真相、揭秘单线程与多线程测速陷阱、深度对比直连、中继与物理内网专线（IEPL/IPLC）的真实硬件与链路成本，并提供网络抖动、丢包率自查清单与避坑指南。]]></description>
+    </item>
+    <item>
+      <title>2026大文件高速下载翻墙梯子与千兆机场推荐指南</title>
+      <link>https://jichangshequ.com/articles/gigabit-large-file-download-mptcp-airport-ladder-2026.html</link>
+      <guid isPermaLink="true">https://jichangshequ.com/articles/gigabit-large-file-download-mptcp-airport-ladder-2026.html</guid>
+      <pubDate>Fri, 13 Nov 2026 04:00:00 GMT</pubDate>
+      <description><![CDATA[2026年最新大文件高速下载翻墙梯子与千兆机场推荐指南。深度拆解跨境单线程带宽瓶颈、Aria2多线程分段拉取、MPTCP多路聚合与BBR拥塞控制调优，提供千兆高吞吐专线技术天梯榜。]]></description>
     </item>
     <item>
       <title>2026跨境IPv6双栈延迟衰减排查与双向竞速调优实测</title>
