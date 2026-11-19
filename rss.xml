@@ -5,7 +5,7 @@
     <link>https://jichangshequ.com/</link>
     <description>机场社区致力于构建公开、透明的网络节点稳定性众测与跨平台使用经验交流平台。聚焦突发阻断预警、晚高峰丢包众包反馈、工单响应 SLA 审计与避坑防跑路指南。</description>
     <language>zh-cn</language>
-    <lastBuildDate>Fri, 13 Nov 2026 11:24:41 GMT</lastBuildDate>
+    <lastBuildDate>Thu, 19 Nov 2026 09:42:53 GMT</lastBuildDate>
     <atom:link href="https://jichangshequ.com/rss.xml" rel="self" type="application/rss+xml"/>
     <item>
       <title>2026六大优质专线机场实测：环球梯/大佬云/云界线等深度测评（附7折优惠码）</title>
@@ -13,6 +13,13 @@
       <guid isPermaLink="true">https://jichangshequ.com/articles/2026-airport-recommendation.html</guid>
       <pubDate>Sat, 10 Oct 2026 04:00:00 GMT</pubDate>
       <description><![CDATA[机场社区2026年度实测长文：深度测评推荐前六名物理专线机场，附7折优惠码HQ66、dly88、yjx888、ll88、sx0077及sds88全套餐折后价格换算明细与智能路由测试。]]></description>
+    </item>
+    <item>
+      <title>2026机场推荐与梯子推荐：晚高峰专线实测、套餐选型避坑与防跑路深度解析</title>
+      <link>https://jichangshequ.com/articles/airport-ladder-recommendations-evening-peak-selection-guide-2026.html</link>
+      <guid isPermaLink="true">https://jichangshequ.com/articles/airport-ladder-recommendations-evening-peak-selection-guide-2026.html</guid>
+      <pubDate>Thu, 19 Nov 2026 04:00:00 GMT</pubDate>
+      <description><![CDATA[2026年最新机场推荐与梯子推荐选型深度全景指南。针对晚高峰骨干网拥塞与QoS限速，深度实测直连、公网中转与IEPL/IPLC内网专线性能差异，详解按需选购套餐思路、客户端协议排障、防跑路避坑自查清单与年度精选服务商横评。]]></description>
     </item>
     <item>
       <title>2026机场跑路特征识别与月付避坑全景指南</title>
